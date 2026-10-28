@@ -30,8 +30,7 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction \
     && chmod -R 775 storage bootstrap/cache
 
 # Render akan menetapkan PORT melalui environment variable.
-RUN printf '\nListen 10000\n' >> /etc/apache2/ports.conf \
-    && sed -ri 's/Listen 80/Listen 10000/' /etc/apache2/ports.conf \
+RUN sed -ri 's/^Listen 80$/Listen 10000/' /etc/apache2/ports.conf \
     && sed -ri 's/:80>/:10000>/' /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 10000
