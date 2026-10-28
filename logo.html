@@ -1,0 +1,268 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Logo PasarLokal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600&display=swap">
+<style>
+  /* Layout: logo di kiri, teks merek rata kiri di kanan; menumpuk di ponsel.
+     Satu tampilan tunggal (hijau limau + tinta hitam) mengikuti logo asli. */
+  :root {
+    --lime: #c4f069;
+    --ink: #111111;
+    --paper: #ffffff;
+    --lime-deep: #a9d94c;
+    --font-display: "Bricolage Grotesque", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--lime);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-block: 40px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .logo { width: 100%; max-width: 380px; }
+  .logo svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+  .copy { min-width: 0; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+
+  .eyebrow {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 4px;
+    background: var(--ink);
+    flex: none;
+  }
+
+  .wordmark {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.1rem, 10vw, 6.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    padding-bottom: 6px;
+    overflow-wrap: anywhere;
+  }
+  .wordmark .l { display: inline-block; }
+  .wordmark .lokal .l {
+    color: var(--paper);
+    -webkit-text-stroke: 0.045em var(--ink);
+    paint-order: stroke fill;
+    text-shadow: 0.05em 0.05em 0 var(--ink);
+  }
+
+  .tagline {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .desc {
+    margin: 0;
+    max-width: 44ch;
+    font-size: 1.05rem;
+  }
+
+  .replay {
+    margin-top: 6px;
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    background: var(--ink);
+    color: var(--lime);
+    font: 600 0.95rem/1 var(--font-body);
+    letter-spacing: 0.02em;
+    padding: 14px 22px;
+    border-radius: 999px;
+    box-shadow: 4px 4px 0 var(--paper);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .replay:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--paper); }
+  .replay:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--paper); }
+  .replay:focus-visible { outline: 3px solid var(--paper); outline-offset: 3px; }
+
+  /* ---------- Animasi logo ---------- */
+  .shadow, .card, .sc, .bar, .pinwrap, .pin, .dot, .ripple { transform-box: fill-box; }
+  .card { transform-origin: 50% 50%; }
+  .sc { transform-origin: 50% 0; }
+  .bar { transform-origin: 0 50%; }
+  .pin { transform-origin: 50% 100%; }
+  .dot, .ripple { transform-origin: 50% 50%; }
+  .ripple { opacity: 0; }
+
+  .go .card   { animation: card-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s backwards; }
+  .go .shadow { animation: shadow-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards; }
+  .go .bar    { animation: bar-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) 0.85s backwards; }
+  .go .sc     { animation: scallop-drop 0.55s ease-out backwards; }
+  .go .sc1    { animation-delay: 0.95s; }
+  .go .sc2    { animation-delay: 1.07s; }
+  .go .sc3    { animation-delay: 1.19s; }
+  .go .sc4    { animation-delay: 1.31s; }
+  .go .pin    { animation: pin-drop 1.2s linear 1.5s backwards; }
+  .go .dot    { animation: dot-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 2.3s backwards; }
+  .go .ripple { animation: ripple 3.4s ease-out 2.05s infinite; }
+  .go .pinwrap { animation: bob 3.4s ease-in-out 3.2s infinite; }
+
+  .go .eyebrow { animation: fade-up 0.6s ease-out 1.9s backwards; }
+  .go .wordmark .l { animation: letter-rise 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) backwards; animation-delay: calc(1.9s + var(--i) * 0.055s); }
+  .go .tagline { animation: fade-up 0.6s ease-out 2.6s backwards; }
+  .go .desc    { animation: fade-up 0.6s ease-out 2.75s backwards; }
+  .go .replay  { animation: fade-up 0.6s ease-out 2.9s backwards; }
+
+  @keyframes card-in {
+    from { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+  }
+  @keyframes shadow-in {
+    from { transform: translate(-25px, -25px); }
+  }
+  @keyframes bar-in {
+    from { transform: scaleX(0); }
+  }
+  @keyframes scallop-drop {
+    0%   { transform: translateY(-26px) scaleY(0.2); opacity: 0; }
+    60%  { transform: translateY(3px) scaleY(1.1); opacity: 1; }
+    100% { transform: none; opacity: 1; }
+  }
+  @keyframes pin-drop {
+    0%   { transform: translateY(-190px); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+    12%  { opacity: 1; }
+    42%  { transform: translateY(0) scale(1.08, 0.88); animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1); }
+    62%  { transform: translateY(-20px) scale(0.97, 1.04); animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.5); }
+    78%  { transform: translateY(0) scale(1.04, 0.94); animation-timing-function: ease-out; }
+    90%  { transform: translateY(-4px) scale(1); animation-timing-function: ease-in; }
+    100% { transform: none; opacity: 1; }
+  }
+  @keyframes dot-pop {
+    0%   { transform: scale(0); }
+    70%  { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  @keyframes ripple {
+    0%   { transform: scale(1); opacity: 0.85; }
+    30%  { transform: scale(6.5); opacity: 0; }
+    100% { transform: scale(6.5); opacity: 0; }
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+  @keyframes fade-up {
+    from { transform: translateY(14px); opacity: 0; }
+  }
+  @keyframes letter-rise {
+    from { transform: translateY(0.6em) rotate(6deg); opacity: 0; }
+  }
+
+  @media (max-width: 760px) {
+    body { padding-block: 28px; }
+    .wrap { grid-template-columns: minmax(0, 1fr); }
+    .logo { max-width: 300px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .go *, .go .pinwrap { animation: none !important; }
+    .replay { display: none; }
+  }
+</style>
+
+<main class="wrap go" id="stage">
+  <div class="logo">
+    <svg viewBox="40 30 440 440" role="img" aria-label="Logo PasarLokal: etalase toko dengan kanopi dan penanda lokasi">
+      <!-- bayangan -->
+      <rect class="shadow" x="83" y="73" width="382" height="382" rx="88" fill="#111111"/>
+
+      <!-- kartu: garis tinta + isi putih -->
+      <g class="card">
+        <rect x="58" y="48" width="382" height="382" rx="88" fill="#111111"/>
+        <rect x="76" y="66" width="346" height="346" rx="70" fill="#ffffff"/>
+      </g>
+
+      <!-- kanopi -->
+      <g class="awning">
+        <rect class="bar" x="115" y="113" width="273" height="12" rx="2" fill="#111111"/>
+
+        <g class="sc sc1">
+          <path d="M115 113 H183.25 V150 A34.125 40 0 0 1 115 150 Z" fill="#111111"/>
+          <path d="M124 125 H174.25 V150 A25.125 31 0 0 1 124 150 Z" fill="#c4f069"/>
+        </g>
+        <g class="sc sc2">
+          <path d="M183.25 113 H251.5 V150 A34.125 40 0 0 1 183.25 150 Z" fill="#111111"/>
+        </g>
+        <g class="sc sc3">
+          <path d="M251.5 113 H319.75 V150 A34.125 40 0 0 1 251.5 150 Z" fill="#111111"/>
+          <path d="M260.5 125 H310.75 V150 A25.125 31 0 0 1 260.5 150 Z" fill="#c4f069"/>
+        </g>
+        <g class="sc sc4">
+          <path d="M319.75 113 H388 V150 A34.125 40 0 0 1 319.75 150 Z" fill="#111111"/>
+        </g>
+      </g>
+
+      <!-- gelombang di ujung pin -->
+      <ellipse class="ripple" cx="250" cy="386" rx="9" ry="3.2" fill="none" stroke="#111111" stroke-width="3"/>
+
+      <!-- pin lokasi -->
+      <g class="pinwrap">
+        <g class="pin">
+          <path d="M250 380 C235 362 195 322 195 275 A55 55 0 0 1 305 275 C305 322 265 362 250 380 Z" fill="#111111"/>
+          <circle class="dot" cx="250" cy="277" r="21" fill="#c4f069"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="copy">
+    <p class="eyebrow">Marketplace produk lokal Indonesia</p>
+    <h1 class="wordmark" aria-label="PasarLokal">
+      <span class="pasar" aria-hidden="true"><span class="l" style="--i:0">P</span><span class="l" style="--i:1">a</span><span class="l" style="--i:2">s</span><span class="l" style="--i:3">a</span><span class="l" style="--i:4">r</span></span><span class="lokal" aria-hidden="true"><span class="l" style="--i:5">L</span><span class="l" style="--i:6">o</span><span class="l" style="--i:7">k</span><span class="l" style="--i:8">a</span><span class="l" style="--i:9">l</span></span>
+    </h1>
+    <p class="tagline">Temukan yang lokal. Dukung yang hebat.</p>
+    <p class="desc">Dari dapur rumahan hingga karya pengrajin, temukan produk istimewa langsung dari UMKM Indonesia.</p>
+    <button class="replay" id="replay" type="button">Putar ulang</button>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var stage = document.getElementById("stage");
+    var btn = document.getElementById("replay");
+    btn.addEventListener("click", function () {
+      stage.classList.remove("go");
+      void stage.offsetWidth;
+      stage.classList.add("go");
+    });
+  })();
+</script>
+
+</body></html>

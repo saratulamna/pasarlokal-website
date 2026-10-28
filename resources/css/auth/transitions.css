@@ -1,0 +1,644 @@
+
+/* ============================================================
+   PASARLOKAL — CINEMATIC AUTH TRANSITIONS
+   Login <-> Register
+   Style: Premium Editorial / Forest Green / Soft Lime
+   ============================================================ */
+
+:root {
+    --auth-forest: #193B2C;
+    --auth-forest-deep: #10291E;
+    --auth-forest-light: #29513A;
+    --auth-lime: #D9F36A;
+    --auth-cream: #FFFEFA;
+    --auth-transition-time: 720ms;
+    --auth-transition-ease: cubic-bezier(.76, 0, .18, 1);
+}
+
+/* ============================================================
+   01. FULL-SCREEN TRANSITION COVER
+   ============================================================ */
+
+.auth-transition-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow: hidden;
+    isolation: isolate;
+    pointer-events: none;
+
+    color: var(--auth-cream);
+
+    background:
+        radial-gradient(
+            ellipse at 50% 44%,
+            rgba(53, 97, 62, .43) 0%,
+            transparent 44%
+        ),
+        radial-gradient(
+            ellipse at 88% 10%,
+            rgba(217, 243, 106, .09) 0%,
+            transparent 31%
+        ),
+        linear-gradient(
+            135deg,
+            #234A33 0%,
+            var(--auth-forest) 43%,
+            var(--auth-forest-deep) 100%
+        );
+
+    transform: translate3d(105%, 0, 0);
+
+    transition:
+        transform var(--auth-transition-time) var(--auth-transition-ease);
+
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* Grain-like texture, created without image assets */
+.auth-transition-overlay::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    content: "";
+
+    opacity: .28;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 25%,
+            rgba(255, 255, 255, .12) 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle at 75% 70%,
+            rgba(255, 255, 255, .08) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size: 37px 37px, 53px 53px;
+
+    animation: authTextureDrift 18s linear infinite;
+}
+
+/* Soft cinematic spotlight */
+.auth-transition-overlay::after {
+    position: absolute;
+    z-index: -1;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(76vw, 850px);
+    aspect-ratio: 1;
+
+    content: "";
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(217, 243, 106, .085) 0%,
+            rgba(217, 243, 106, .025) 35%,
+            transparent 69%
+        );
+
+    transform: translate(-50%, -50%);
+    animation: authSpotlight 5s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   02. ATMOSPHERIC ORBITS
+   Existing three orb elements are preserved
+   ============================================================ */
+
+.auth-transition-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(255, 254, 250, .12);
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.auth-transition-orb-one {
+    width: min(78vw, 560px);
+
+    border-color: rgba(255, 254, 250, .11);
+
+    box-shadow:
+        0 0 0 35px rgba(255, 254, 250, .012),
+        0 0 0 70px rgba(255, 254, 250, .008);
+
+    animation: authOrbitBreath 7s ease-in-out infinite;
+}
+
+.auth-transition-orb-two {
+    width: min(58vw, 400px);
+
+    border-color: rgba(217, 243, 106, .21);
+    border-style: dashed;
+
+    animation:
+        authOrbitRotate 45s linear infinite,
+        authOrbitBreath 8s ease-in-out infinite;
+}
+
+.auth-transition-orb-three {
+    width: min(38vw, 260px);
+
+    border-color: rgba(255, 254, 250, .085);
+
+    box-shadow:
+        inset 0 0 45px rgba(217, 243, 106, .025);
+
+    animation: authOrbitBreath 5s ease-in-out infinite reverse;
+}
+
+/* ============================================================
+   03. CENTER CONTENT
+   ============================================================ */
+
+.auth-transition-content {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: min(88%, 390px);
+
+    text-align: center;
+
+    animation: authContentEntrance 650ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* Fine lime accent above the brand */
+.auth-transition-content::before {
+    position: absolute;
+
+    top: -39px;
+    left: 50%;
+
+    width: 32px;
+    height: 3px;
+
+    content: "";
+
+    border-radius: 4px;
+
+    background: var(--auth-lime);
+    box-shadow: 0 0 22px rgba(217, 243, 106, .28);
+
+    transform: translateX(-50%);
+}
+
+/* ============================================================
+   04. BRAND LOGO CARD
+   ============================================================ */
+
+.auth-transition-logo-wrap {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    min-width: 144px;
+    min-height: 88px;
+
+    padding: 16px 23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 254, 250, .99),
+            rgba(248, 247, 238, .97)
+        );
+
+    border: 1px solid rgba(255, 255, 255, .58);
+    border-radius: 17px;
+
+    box-shadow:
+        0 2px 0 rgba(255, 255, 255, .15),
+        0 15px 35px rgba(0, 0, 0, .11),
+        0 35px 85px rgba(0, 0, 0, .10);
+
+    animation: authLogoFloat 4.2s ease-in-out infinite;
+}
+
+/* Outer subtle aura */
+.auth-transition-logo-wrap::before {
+    position: absolute;
+    inset: -7px;
+
+    content: "";
+
+    border: 1px solid rgba(217, 243, 106, .15);
+    border-radius: 21px;
+
+    pointer-events: none;
+}
+
+/* Small decorative corner */
+.auth-transition-logo-wrap::after {
+    position: absolute;
+
+    right: -7px;
+    top: -7px;
+
+    width: 18px;
+    height: 18px;
+
+    content: "";
+
+    background: var(--auth-lime);
+    border: 3px solid var(--auth-forest);
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 3px rgba(217, 243, 106, .09);
+}
+
+.auth-transition-logo {
+    display: block;
+
+    width: auto;
+    max-width: 190px;
+    height: 43px;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+/* ============================================================
+   05. LOADING LINE
+   ============================================================ */
+
+.auth-transition-progress {
+    position: relative;
+
+    display: block;
+
+    width: 56px;
+    height: 3px;
+
+    margin-top: 32px;
+
+    overflow: hidden;
+
+    background: rgba(255, 254, 250, .16);
+    border-radius: 5px;
+}
+
+.auth-transition-progress::before {
+    position: absolute;
+    inset: 0;
+
+    content: "";
+
+    background: rgba(217, 243, 106, .15);
+    border-radius: inherit;
+}
+
+.auth-transition-progress::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    content: "";
+
+    background: linear-gradient(
+        90deg,
+        #B8D74F,
+        #E9FF9D,
+        #D9F36A
+    );
+
+    border-radius: inherit;
+
+    box-shadow: 0 0 12px rgba(217, 243, 106, .25);
+
+    transform: translate3d(-105%, 0, 0);
+
+    animation: authProgressSweep 620ms cubic-bezier(.65, 0, .35, 1) forwards;
+}
+
+/* ============================================================
+   06. TITLE AND BRAND MESSAGE
+   ============================================================ */
+
+.auth-transition-title {
+    position: relative;
+
+    margin: 20px 0 0;
+
+    color: var(--auth-cream);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(17px, 2.1vw, 22px);
+    font-weight: 800;
+    line-height: 1.45;
+    letter-spacing: -.65px;
+
+    text-wrap: balance;
+}
+
+.auth-transition-caption {
+    display: block;
+
+    margin-top: 11px;
+
+    color: rgba(255, 254, 250, .57);
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: 2px;
+}
+
+/* ============================================================
+   07. CORNER SIGNATURE
+   ============================================================ */
+
+.auth-transition-corner {
+    position: absolute;
+    right: 32px;
+    bottom: 27px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    color: rgba(255, 254, 250, .49);
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.auth-transition-corner::before {
+    display: block;
+
+    width: 23px;
+    height: 1px;
+
+    content: "";
+
+    background: rgba(217, 243, 106, .65);
+}
+
+/* ============================================================
+   08. PAGE ARRIVAL STATE
+   ============================================================ */
+
+/* Keep the destination covered until its JS transition starts. */
+html.auth-transition-pending .auth-transition-overlay {
+    transform: translate3d(0, 0, 0);
+    transition: none;
+}
+
+html.auth-transition-pending .login-shell,
+html.auth-transition-pending .register-layout {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0);
+    transition: none !important;
+}
+
+/* The cover travels left to reveal the destination page. */
+html.auth-transition-in .auth-transition-overlay {
+    transform: translate3d(-105%, 0, 0);
+
+    transition:
+        transform var(--auth-transition-time) var(--auth-transition-ease);
+}
+
+html.auth-transition-in .login-shell,
+html.auth-transition-in .register-layout {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+
+    transition:
+        opacity 430ms ease 100ms,
+        transform 620ms cubic-bezier(.18, .78, .25, 1) 40ms;
+}
+
+/* Previous page transitions away underneath the cover. */
+html.auth-transition-out .auth-transition-overlay {
+    transform: translate3d(0, 0, 0);
+
+    transition:
+        transform 620ms var(--auth-transition-ease);
+}
+
+html.auth-transition-out .login-shell,
+html.auth-transition-out .register-layout {
+    opacity: .45;
+    transform: translate3d(-20px, 0, 0) scale(.995);
+
+    transition:
+        opacity 370ms ease,
+        transform 500ms cubic-bezier(.2, .7, .2, 1);
+}
+
+/* ============================================================
+   09. CINEMATIC DETAILS
+   ============================================================ */
+
+@keyframes authContentEntrance {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 14px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes authLogoFloat {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes authOrbitRotate {
+    from {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+
+    to {
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    }
+}
+
+@keyframes authOrbitBreath {
+    0%,
+    100% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes authSpotlight {
+    from {
+        opacity: .6;
+        scale: .96;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1.04;
+    }
+}
+
+@keyframes authTextureDrift {
+    from {
+        background-position: 0 0, 0 0;
+    }
+
+    to {
+        background-position: 37px 37px, -53px 53px;
+    }
+}
+
+@keyframes authProgressSweep {
+    0% {
+        transform: translate3d(-105%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ============================================================
+   10. RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 600px) {
+    .auth-transition-logo-wrap {
+        min-width: 126px;
+        min-height: 78px;
+
+        padding: 13px 18px;
+
+        border-radius: 14px;
+    }
+
+    .auth-transition-logo-wrap::before {
+        border-radius: 18px;
+    }
+
+    .auth-transition-logo {
+        height: 37px;
+        max-width: 165px;
+    }
+
+    .auth-transition-progress {
+        margin-top: 28px;
+    }
+
+    .auth-transition-title {
+        margin-top: 17px;
+        font-size: 17px;
+    }
+
+    .auth-transition-caption {
+        max-width: 270px;
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .auth-transition-orb-one {
+        width: 115vw;
+    }
+
+    .auth-transition-orb-two {
+        width: 83vw;
+    }
+
+    .auth-transition-orb-three {
+        width: 52vw;
+    }
+
+    .auth-transition-corner {
+        right: 16px;
+        bottom: 17px;
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .auth-transition-corner::before {
+        width: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .auth-transition-title {
+        font-size: 15px;
+    }
+
+    .auth-transition-caption {
+        font-size: 6px;
+        letter-spacing: 1.1px;
+    }
+}
+
+/* ============================================================
+   11. ACCESSIBILITY
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-transition-overlay,
+    html.auth-transition-in .auth-transition-overlay,
+    html.auth-transition-out .auth-transition-overlay,
+    html.auth-transition-in .login-shell,
+    html.auth-transition-in .register-layout,
+    html.auth-transition-out .login-shell,
+    html.auth-transition-out .register-layout {
+        transition-duration: 1ms !important;
+    }
+
+    .auth-transition-overlay::before,
+    .auth-transition-overlay::after,
+    .auth-transition-orb,
+    .auth-transition-content,
+    .auth-transition-logo-wrap,
+    .auth-transition-progress::after {
+        animation: none !important;
+    }
+}

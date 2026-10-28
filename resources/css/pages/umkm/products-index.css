@@ -1,0 +1,2493 @@
+﻿
+/* =========================================================
+   PASARLOKAL — UMKM PRODUCT CATALOG
+   Theme: Forest / Ivory / Lime
+   File: resources/css/pages/umkm/products-index.css
+   ========================================================= */
+
+#upiApp {
+    --upi-paper: #F7F4EA;
+    --upi-paper-deep: #EEE9DC;
+    --upi-white: #FFFDF7;
+    --upi-forest: #193B2C;
+    --upi-forest-deep: #10291E;
+    --upi-ink: #202B23;
+    --upi-sage: #DCE7D4;
+    --upi-sage-dark: #B9CDB1;
+    --upi-lime: #D9F36A;
+    --upi-orange: #F3A45C;
+    --upi-coral: #ED9D87;
+    --upi-purple: #D9D0ED;
+    --upi-muted: #73796E;
+    --upi-border: #E3E0D4;
+
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+    background: var(--upi-paper);
+    color: var(--upi-ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+#upiApp *,
+#upiApp *::before,
+#upiApp *::after {
+    box-sizing: border-box;
+}
+
+#upiApp button,
+#upiApp input,
+#upiApp select,
+#upiApp textarea {
+    font: inherit;
+}
+
+#upiApp a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#upiApp button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#upiApp img,
+#upiApp svg {
+    max-width: 100%;
+}
+
+#upiApp button:focus-visible,
+#upiApp a:focus-visible,
+#upiApp input:focus-visible,
+#upiApp select:focus-visible {
+    outline: 3px solid rgba(155, 188, 61, .75);
+    outline-offset: 3px;
+}
+
+#upiApp [hidden] {
+    display: none !important;
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR — gunakan kerangka navigasi dashboard yang sama
+   --------------------------------------------------------- */
+
+#upiApp > :first-child:not(.upi-main) {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: block;
+    flex: 0 0 252px;
+    width: 252px;
+    min-width: 0;
+    height: 100vh;
+    min-height: 100vh;
+    align-self: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--upi-forest);
+    color: var(--upi-white);
+    scrollbar-color: rgba(255, 255, 255, .22) transparent;
+    scrollbar-width: thin;
+}
+
+#upiApp > :first-child:not(.upi-main)::-webkit-scrollbar {
+    width: 5px;
+}
+
+#upiApp > :first-child:not(.upi-main)::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .22);
+}
+
+.upi-sidebar-overlay {
+    display: none;
+}
+
+/* ---------------------------------------------------------
+   MAIN / HEADER
+   --------------------------------------------------------- */
+
+.upi-main {
+    position: relative;
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at 95% 0%,
+            rgba(217, 243, 106, .10),
+            transparent 26%
+        ),
+        var(--upi-paper);
+}
+
+.upi-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 25;
+    display: flex;
+    min-height: 76px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 13px clamp(22px, 3.4vw, 48px);
+    border-bottom: 1px solid rgba(25, 59, 44, .08);
+    background: rgba(255, 253, 247, .92);
+    backdrop-filter: blur(18px);
+}
+
+.upi-topbar-left,
+.upi-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    min-width: 0;
+}
+
+.upi-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+    color: #888D7F;
+    font-size: 11px;
+    font-weight: 650;
+}
+
+.upi-breadcrumb a {
+    transition: color .18s ease;
+}
+
+.upi-breadcrumb a:hover {
+    color: var(--upi-forest);
+}
+
+.upi-breadcrumb > span {
+    color: #B7B7A9;
+}
+
+.upi-breadcrumb strong {
+    color: var(--upi-forest);
+    font-weight: 850;
+}
+
+.upi-mobile-toggle {
+    display: none;
+    width: 39px;
+    height: 39px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--upi-border);
+    border-radius: 11px;
+    background: var(--upi-white);
+    color: var(--upi-forest);
+    cursor: pointer;
+}
+
+.upi-mobile-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.upi-topbar-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 10px;
+    border: 1px solid #E0E9D1;
+    border-radius: 8px;
+    background: #F4F7E9;
+    color: #55713D;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .3px;
+    white-space: nowrap;
+}
+
+.upi-topbar-status > span {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #88AB4B;
+    box-shadow: 0 0 0 3px rgba(136, 171, 75, .12);
+}
+
+.upi-user {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.upi-user-avatar {
+    display: grid;
+    flex: 0 0 37px;
+    width: 37px;
+    height: 37px;
+    place-items: center;
+    border: 1px solid rgba(25, 59, 44, .09);
+    border-radius: 12px;
+    background: var(--upi-sage);
+    color: var(--upi-forest);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.upi-user-info {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+.upi-user-info strong {
+    max-width: 155px;
+    overflow: hidden;
+    color: var(--upi-forest);
+    font-size: 11px;
+    font-weight: 850;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.upi-user-info > span {
+    margin-top: 3px;
+    color: #85897A;
+    font-size: 9px;
+}
+
+/* ---------------------------------------------------------
+   PAGE CONTENT
+   --------------------------------------------------------- */
+
+.upi-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 27px clamp(22px, 3.4vw, 48px) 0;
+}
+
+/* ---------------------------------------------------------
+   HERO
+   --------------------------------------------------------- */
+
+.upi-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(270px, .9fr);
+    min-height: 297px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(16, 41, 30, .12);
+    border-radius: 21px;
+    background: var(--upi-forest);
+    color: var(--upi-white);
+}
+
+.upi-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: -175px;
+    left: -125px;
+    width: 380px;
+    height: 380px;
+    border: 1px solid rgba(255, 253, 247, .09);
+    border-radius: 50%;
+    content: "";
+}
+
+.upi-hero::after {
+    position: absolute;
+    z-index: -1;
+    right: 32%;
+    bottom: -250px;
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgba(255, 253, 247, .08);
+    border-radius: 50%;
+    content: "";
+}
+
+.upi-hero-copy {
+    position: relative;
+    z-index: 2;
+    padding: 34px 0 28px 35px;
+}
+
+.upi-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #DCE7D4;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.8px;
+}
+
+.upi-eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--upi-lime);
+    box-shadow: 0 0 0 4px rgba(217, 243, 106, .13);
+}
+
+.upi-hero h1 {
+    margin: 17px 0 13px;
+    color: var(--upi-white);
+    font-size: clamp(36px, 3.7vw, 49px);
+    font-weight: 950;
+    letter-spacing: -2.4px;
+    line-height: 1.04;
+}
+
+.upi-hero h1 > span {
+    color: var(--upi-lime);
+}
+
+.upi-hero-copy > p {
+    max-width: 430px;
+    margin: 0;
+    color: rgba(255, 253, 247, .73);
+    font-size: 11.5px;
+    line-height: 1.9;
+}
+
+.upi-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-top: 23px;
+}
+
+.upi-primary-button {
+    display: inline-flex;
+    min-height: 43px;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 14px;
+    border: 1px solid var(--upi-lime);
+    border-radius: 9px;
+    background: var(--upi-lime);
+    color: var(--upi-forest) !important;
+    font-size: 10px;
+    font-weight: 900;
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.upi-primary-button:hover {
+    transform: translateY(-2px);
+    background: #E3FA85;
+    box-shadow: 0 5px 0 rgba(8, 24, 15, .18);
+}
+
+.upi-button-plus {
+    display: grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+    border: 1px solid rgba(25, 59, 44, .2);
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.upi-primary-button > svg {
+    width: 15px;
+    height: 15px;
+    margin-left: 2px;
+}
+
+.upi-hero-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 253, 247, .62);
+    font-size: 9px;
+}
+
+.upi-hero-caption > span {
+    color: var(--upi-lime);
+    font-size: 14px;
+}
+
+/* Hero illustration */
+
+.upi-hero-art {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: 297px;
+    place-items: center;
+}
+
+.upi-hero-orbit {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.upi-hero-orbit-one {
+    width: 237px;
+    height: 237px;
+    border: 1px solid rgba(255, 253, 247, .16);
+}
+
+.upi-hero-orbit-two {
+    width: 184px;
+    height: 184px;
+    background: rgba(217, 243, 106, .075);
+}
+
+.upi-hero-product {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 194px;
+    min-height: 220px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px;
+    transform: rotate(4deg);
+    border: 1px solid rgba(25, 59, 44, .11);
+    border-radius: 15px;
+    background: var(--upi-white);
+    box-shadow: 8px 10px 0 rgba(8, 24, 15, .25);
+    color: var(--upi-forest);
+}
+
+.upi-hero-product-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #777F6A;
+    font-size: 7px;
+    font-weight: 950;
+    letter-spacing: 1.1px;
+}
+
+.upi-hero-product-top > span:last-child {
+    color: #93AE43;
+    font-size: 18px;
+}
+
+.upi-hero-bag {
+    display: grid;
+    width: 86px;
+    height: 92px;
+    align-self: center;
+    place-items: center;
+}
+
+.upi-hero-bag svg {
+    width: 100%;
+    height: 100%;
+}
+
+.upi-hero-product-bottom strong,
+.upi-hero-product-bottom span {
+    display: block;
+}
+
+.upi-hero-product-bottom strong {
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: -.35px;
+}
+
+.upi-hero-product-bottom span {
+    margin-top: 4px;
+    color: #858A79;
+    font-size: 6.5px;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+}
+
+.upi-floating-tag {
+    position: absolute;
+    z-index: 3;
+    padding: 9px 10px;
+    border: 1px solid var(--upi-forest-deep);
+    border-radius: 6px;
+    box-shadow: 3px 3px 0 rgba(8, 24, 15, .45);
+    color: var(--upi-forest);
+    font-size: 7.5px;
+    font-weight: 950;
+    white-space: nowrap;
+}
+
+.upi-floating-tag-top {
+    top: 33px;
+    right: 14px;
+    transform: rotate(6deg);
+    background: var(--upi-lime);
+    letter-spacing: .5px;
+}
+
+.upi-floating-tag-top > span {
+    margin-right: 3px;
+}
+
+.upi-floating-tag-bottom {
+    right: 16px;
+    bottom: 26px;
+    transform: rotate(-4deg);
+    background: var(--upi-orange);
+    letter-spacing: .5px;
+}
+
+/* ---------------------------------------------------------
+   SECTION HEADING
+   --------------------------------------------------------- */
+
+.upi-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin: 33px 0 17px;
+}
+
+.upi-section-kicker {
+    display: inline-block;
+    color: #879653;
+    font-size: 8px;
+    font-weight: 950;
+    letter-spacing: 1.8px;
+}
+
+.upi-section-heading h2 {
+    margin: 5px 0 4px;
+    color: var(--upi-forest);
+    font-size: 25px;
+    font-weight: 950;
+    letter-spacing: -1px;
+    line-height: 1.25;
+}
+
+.upi-section-heading h2 > span {
+    color: #90A847;
+    font-size: 17px;
+}
+
+.upi-section-heading p {
+    margin: 0;
+    color: var(--upi-muted);
+    font-size: 10.5px;
+    line-height: 1.7;
+}
+
+.upi-secondary-button {
+    display: inline-flex;
+    min-height: 39px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid #D9D9CA;
+    border-radius: 9px;
+    background: var(--upi-white);
+    color: var(--upi-forest) !important;
+    font-size: 10px;
+    font-weight: 850;
+    transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+
+.upi-secondary-button:hover {
+    transform: translateY(-1px);
+    border-color: #A9B98D;
+    background: #F9FBEF;
+}
+
+.upi-secondary-button > span {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* ---------------------------------------------------------
+   STATS CARDS
+   --------------------------------------------------------- */
+
+.upi-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.upi-stat-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 17px 17px 13px;
+    border: 1px solid var(--upi-border);
+    border-radius: 14px;
+    background: var(--upi-white);
+    box-shadow: 0 3px 0 rgba(25, 59, 44, .025);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.upi-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(25, 59, 44, .06);
+}
+
+.upi-stat-card-total {
+    background: #FFFDF7;
+}
+
+.upi-stat-card-active {
+    background: #F5F8ED;
+}
+
+.upi-stat-card-low {
+    background: #FFF7EC;
+}
+
+.upi-stat-card-empty {
+    background: #F6F1F5;
+}
+
+.upi-stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+.upi-stat-icon {
+    display: grid;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 1px solid rgba(25, 59, 44, .06);
+    border-radius: 11px;
+    background: white;
+    color: var(--upi-forest);
+}
+
+.upi-stat-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.upi-stat-label {
+    color: #969888;
+    font-size: 7px;
+    font-weight: 950;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.upi-stat-value {
+    margin-top: 17px;
+    color: var(--upi-forest);
+    font-size: clamp(27px, 2.5vw, 34px);
+    font-weight: 950;
+    letter-spacing: -1.7px;
+    line-height: 1;
+    overflow-wrap: anywhere;
+}
+
+.upi-stat-description {
+    min-height: 31px;
+    margin-top: 8px;
+    color: #747B6D;
+    font-size: 9px;
+    line-height: 1.7;
+}
+
+.upi-stat-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 11px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(25, 59, 44, .09);
+}
+
+.upi-stat-bottom > span:first-child {
+    color: #879653;
+    font-size: 8px;
+    font-weight: 950;
+}
+
+.upi-stat-bottom > div {
+    flex: 1;
+    height: 1px;
+    background: rgba(25, 59, 44, .12);
+}
+
+.upi-stat-bottom > span:last-child {
+    color: #797E70;
+    font-size: 8px;
+    font-weight: 700;
+    text-align: right;
+}
+
+/* ---------------------------------------------------------
+   CATALOG PANEL
+   --------------------------------------------------------- */
+
+.upi-catalog-panel {
+    min-width: 0;
+    margin-top: 23px;
+    padding: 24px;
+    border: 1px solid #E3DFD2;
+    border-radius: 17px;
+    background: var(--upi-white);
+    box-shadow: 0 3px 0 rgba(25, 59, 44, .025);
+}
+
+.upi-catalog-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.upi-catalog-heading h2 {
+    margin: 4px 0 4px;
+    color: var(--upi-forest);
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: -.5px;
+}
+
+.upi-catalog-heading p {
+    margin: 0;
+    color: var(--upi-muted);
+    font-size: 10px;
+}
+
+.upi-catalog-heading p strong {
+    color: var(--upi-forest);
+    font-weight: 900;
+}
+
+.upi-catalog-add {
+    display: inline-flex;
+    min-height: 39px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid var(--upi-forest);
+    border-radius: 9px;
+    background: var(--upi-forest);
+    color: white !important;
+    font-size: 10px;
+    font-weight: 850;
+    transition: background .18s ease, transform .18s ease;
+}
+
+.upi-catalog-add:hover {
+    transform: translateY(-1px);
+    background: #28523B;
+}
+
+.upi-catalog-add > span {
+    color: var(--upi-lime);
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* Filter controls */
+
+.upi-filter-form {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(140px, .56fr) minmax(130px, .48fr) auto auto;
+    align-items: center;
+    gap: 9px;
+}
+
+.upi-search-field,
+.upi-filter-select {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 42px;
+    align-items: center;
+    gap: 8px;
+    padding: 0 11px;
+    border: 1px solid #DEDED1;
+    border-radius: 9px;
+    background: #FFFEFA;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.upi-search-field:focus-within,
+.upi-filter-select:focus-within {
+    border-color: #9CAE75;
+    box-shadow: 0 0 0 3px rgba(217, 243, 106, .2);
+}
+
+.upi-search-field > svg,
+.upi-filter-select > svg {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    color: #8B9181;
+}
+
+.upi-search-field input {
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--upi-ink);
+    font-size: 10px !important;
+}
+
+.upi-search-field input::placeholder {
+    color: #A2A497;
+}
+
+.upi-search-field input:focus-visible,
+.upi-filter-select select:focus-visible,
+.upi-view-options select:focus-visible {
+    outline: none;
+}
+
+.upi-search-field kbd {
+    display: grid;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid #E6E4D9;
+    border-radius: 6px;
+    background: #F6F4EC;
+    color: #858B7B;
+    font-size: 13px;
+}
+
+.upi-filter-select select {
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    padding: 0 15px 0 0;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #5A6558;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.upi-select-arrow {
+    flex-shrink: 0;
+    color: #8B9181;
+    font-size: 17px;
+    pointer-events: none;
+}
+
+.upi-filter-submit,
+.upi-filter-reset {
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 850;
+    cursor: pointer;
+    transition: background .18s ease, border-color .18s ease;
+}
+
+.upi-filter-submit {
+    border-color: var(--upi-forest);
+    background: var(--upi-forest);
+    color: white;
+}
+
+.upi-filter-submit:hover {
+    background: #28523B;
+}
+
+.upi-filter-reset {
+    border-color: #E3E0D5;
+    background: #F8F6EF;
+    color: #7A8071;
+}
+
+.upi-filter-reset:hover {
+    border-color: #C5CDB3;
+    background: #EEF2E5;
+    color: var(--upi-forest);
+}
+
+/* Quick filters and sort */
+
+.upi-quick-filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px;
+    padding: 17px 0;
+    border-bottom: 1px solid #ECE9E0;
+}
+
+.upi-quick-filters {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.upi-quick-filter {
+    display: inline-flex;
+    min-height: 31px;
+    align-items: center;
+    gap: 6px;
+    padding: 0 9px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: #777E70;
+    font-size: 9px;
+    font-weight: 750;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .17s ease, border-color .17s ease, color .17s ease;
+}
+
+.upi-quick-filter:hover {
+    border-color: #E2E3D5;
+    background: #F8F8F1;
+    color: var(--upi-forest);
+}
+
+.upi-quick-filter.is-active {
+    border-color: #DCE7C6;
+    background: #EFF4E1;
+    color: var(--upi-forest);
+    font-weight: 900;
+}
+
+.upi-quick-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.upi-dot-all {
+    background: #7E9860;
+}
+
+.upi-dot-active {
+    background: #77A34E;
+}
+
+.upi-dot-inactive {
+    background: #A6A89D;
+}
+
+.upi-dot-low {
+    background: #E5A14E;
+}
+
+.upi-dot-empty {
+    background: #D67D6C;
+}
+
+.upi-view-options {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 7px;
+}
+
+.upi-view-options > label {
+    color: #919386;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.upi-view-options > select {
+    max-width: 118px;
+    height: 32px;
+    padding: 0 6px;
+    border: 1px solid #E4E1D6;
+    border-radius: 7px;
+    outline: 0;
+    background: #FFFDF7;
+    color: #596454;
+    font-size: 9px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.upi-view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border: 1px solid #E2E0D5;
+    border-radius: 8px;
+    background: #F8F6EF;
+}
+
+.upi-view-button {
+    display: grid;
+    width: 27px;
+    height: 26px;
+    place-items: center;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #868B7D;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+}
+
+.upi-view-button svg {
+    width: 15px;
+    height: 15px;
+}
+
+.upi-view-button.is-active {
+    background: var(--upi-forest);
+    color: white;
+}
+
+/* Alerts */
+
+.upi-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 17px;
+    padding: 13px 15px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+}
+
+.upi-alert-icon {
+    display: grid;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+    place-items: center;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.upi-alert > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.upi-alert strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.upi-alert p {
+    margin: 3px 0 0;
+    font-size: 10px;
+}
+
+.upi-alert > button {
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.upi-alert-success {
+    border-color: #CEE0BE;
+    background: #F0F6E9;
+    color: #315B34;
+}
+
+.upi-alert-success .upi-alert-icon {
+    background: #DCEACF;
+}
+
+.upi-alert-success > button {
+    color: #55734A;
+}
+
+.upi-alert-error {
+    border-color: #EAC7BE;
+    background: #FFF1EC;
+    color: #8C3F34;
+}
+
+.upi-alert-error .upi-alert-icon {
+    background: #F6DCD4;
+}
+
+.upi-alert-error > button {
+    color: #9B5346;
+}
+
+/* ---------------------------------------------------------
+   PRODUCT GRID
+   --------------------------------------------------------- */
+
+.upi-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 15px;
+    padding-top: 19px;
+}
+
+.upi-product-card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: visible;
+    border: 1px solid #E1DED2;
+    border-radius: 14px;
+    background: #FFFDF8;
+    box-shadow: 0 3px 0 rgba(25, 59, 44, .035);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    animation: upiCardAppear .32s ease both;
+}
+
+.upi-product-card:hover {
+    transform: translateY(-3px);
+    border-color: #C9D3B9;
+    box-shadow: 0 9px 22px rgba(25, 59, 44, .07);
+}
+
+.upi-product-card[hidden] {
+    display: none !important;
+}
+
+.upi-product-image-wrap {
+    position: relative;
+    height: 185px;
+    flex-shrink: 0;
+    overflow: visible;
+    border-radius: 13px 13px 0 0;
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(217, 243, 106, .2), transparent 67%),
+        #F0F0E5;
+}
+
+.upi-product-image-wrap > .upi-product-image,
+.upi-product-image-wrap > .upi-product-image-fallback {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 13px 13px 0 0;
+}
+
+.upi-product-image {
+    display: block;
+    object-fit: cover;
+    transition: transform .35s ease;
+}
+
+.upi-product-card:hover .upi-product-image {
+    transform: scale(1.025);
+}
+
+.upi-product-image-fallback {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    background:
+        radial-gradient(ellipse at 50% 48%, rgba(217, 243, 106, .2), transparent 60%),
+        #F0F0E5;
+    color: #8B8F80;
+    font-size: 9px;
+}
+
+.upi-product-image-fallback svg {
+    width: 70px;
+    height: 70px;
+}
+
+.upi-product-category-badge {
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    left: 10px;
+    max-width: calc(100% - 58px);
+    overflow: hidden;
+    padding: 6px 8px;
+    border: 1px solid rgba(25, 59, 44, .10);
+    border-radius: 6px;
+    background: rgba(255, 253, 247, .94);
+    color: #536A3F;
+    font-size: 8px;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+}
+
+.upi-product-menu-wrap {
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+}
+
+.upi-product-menu-toggle {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid rgba(25, 59, 44, .08);
+    border-radius: 10px;
+    background: rgba(255, 253, 247, .96);
+    color: var(--upi-forest);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background .18s ease, transform .18s ease;
+}
+
+.upi-product-menu-toggle:hover,
+.upi-product-menu-toggle[aria-expanded="true"] {
+    transform: translateY(-1px);
+    background: var(--upi-lime);
+}
+
+.upi-product-menu-toggle svg {
+    width: 19px;
+    height: 19px;
+}
+
+.upi-product-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 15;
+    width: 174px;
+    padding: 5px;
+    border: 1px solid #E1DFD3;
+    border-radius: 10px;
+    background: #FFFDF7;
+    box-shadow: 0 12px 30px rgba(24, 42, 28, .13);
+    animation: upiMenuAppear .15s ease both;
+}
+
+.upi-product-menu > a,
+.upi-product-menu > form > button {
+    display: flex;
+    width: 100%;
+    min-height: 36px;
+    align-items: center;
+    gap: 8px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #536052;
+    font-size: 10px;
+    font-weight: 750;
+    text-align: left;
+    cursor: pointer;
+    transition: background .16s ease;
+}
+
+.upi-product-menu > a:hover {
+    background: #EFF4E6;
+    color: var(--upi-forest);
+}
+
+.upi-product-menu > form > button:hover {
+    background: #FFF0EA;
+    color: #B3483C;
+}
+
+.upi-product-menu > a > span,
+.upi-product-menu > form > button > span {
+    width: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.upi-product-status {
+    position: absolute;
+    z-index: 2;
+    top: 13px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    max-width: calc(100% - 58px);
+    padding: 5px 7px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: 6px;
+    background: rgba(255, 253, 247, .93);
+    font-size: 7px;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.upi-status-normal {
+    color: #55783A;
+}
+
+.upi-status-low {
+    color: #A66827;
+}
+
+.upi-status-empty {
+    color: #B94F43;
+}
+
+/* Product content */
+
+.upi-product-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 14px;
+}
+
+.upi-product-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.upi-product-title-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.upi-product-name {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0;
+    color: var(--upi-forest);
+    font-size: 13px;
+    font-weight: 950;
+    letter-spacing: -.25px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.upi-product-id {
+    display: inline-block;
+    margin-top: 4px;
+    color: #A0A294;
+    font-size: 7px;
+    font-weight: 900;
+    letter-spacing: .8px;
+}
+
+.upi-status-chip {
+    display: inline-flex;
+    max-width: 92px;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 6px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 7px;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.upi-status-chip > span {
+    width: 5px;
+    height: 5px;
+    flex: 0 0 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.upi-status-chip-active {
+    border-color: #DAE8CB;
+    background: #EFF5E7;
+    color: #50753A;
+}
+
+.upi-status-chip-inactive {
+    border-color: #E4E1D8;
+    background: #F1EFE8;
+    color: #8B8D82;
+}
+
+.upi-status-chip-pending {
+    border-color: #F2DABD;
+    background: #FFF3E1;
+    color: #A36C32;
+}
+
+.upi-product-description {
+    display: -webkit-box;
+    min-height: 35px;
+    overflow: hidden;
+    margin: 10px 0 0;
+    color: #818577;
+    font-size: 9px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.upi-product-divider {
+    height: 1px;
+    margin: 12px 0;
+    background: #ECE9E0;
+}
+
+.upi-product-metrics {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 10px;
+}
+
+.upi-product-price,
+.upi-product-stock {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.upi-product-price > span,
+.upi-product-stock > span {
+    color: #96998C;
+    font-size: 7px;
+    font-weight: 950;
+    letter-spacing: .7px;
+}
+
+.upi-product-price > strong {
+    overflow-wrap: anywhere;
+    color: var(--upi-forest);
+    font-size: clamp(13px, 1.3vw, 17px);
+    font-weight: 950;
+    letter-spacing: -.45px;
+}
+
+.upi-product-stock {
+    padding-left: 12px;
+    border-left: 1px solid #ECE9E0;
+}
+
+.upi-product-stock > strong {
+    color: #517342;
+    font-size: 16px;
+    font-weight: 950;
+    letter-spacing: -.4px;
+}
+
+.upi-product-stock > strong.is-low {
+    color: #AF762F;
+}
+
+.upi-product-stock > strong.is-empty {
+    color: #C05B4E;
+}
+
+.upi-product-stock > strong > small {
+    margin-left: 2px;
+    color: #96998C;
+    font-size: 8px;
+    font-weight: 650;
+    letter-spacing: 0;
+}
+
+.upi-product-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.upi-product-edit-button {
+    display: inline-flex;
+    min-height: 36px;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 9px;
+    border: 1px solid #DDE3D1;
+    border-radius: 8px;
+    background: #F5F7EC;
+    color: var(--upi-forest) !important;
+    font-size: 9px;
+    font-weight: 900;
+    transition: border-color .18s ease, background .18s ease;
+}
+
+.upi-product-edit-button:hover {
+    border-color: #B9C9A3;
+    background: #EAF1DA;
+}
+
+.upi-product-edit-button svg {
+    width: 14px;
+    height: 14px;
+}
+
+.upi-product-action-decoration {
+    display: grid;
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px;
+    place-items: center;
+    border: 1px solid #E5E2D7;
+    border-radius: 8px;
+    background: #FFFDF7;
+    color: #81944E;
+    font-size: 17px;
+}
+
+/* List view */
+
+.upi-product-grid.is-list-view {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+}
+
+.upi-product-grid.is-list-view .upi-product-card {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    overflow: visible;
+}
+
+.upi-product-grid.is-list-view .upi-product-image-wrap {
+    height: 100%;
+    min-height: 178px;
+    border-radius: 13px 0 0 13px;
+}
+
+.upi-product-grid.is-list-view .upi-product-image-wrap > .upi-product-image,
+.upi-product-grid.is-list-view .upi-product-image-wrap > .upi-product-image-fallback {
+    border-radius: 13px 0 0 13px;
+}
+
+.upi-product-grid.is-list-view .upi-product-body {
+    min-width: 0;
+    padding: 15px 17px;
+}
+
+.upi-product-grid.is-list-view .upi-product-description {
+    min-height: 0;
+    -webkit-line-clamp: 2;
+}
+
+.upi-product-grid.is-list-view .upi-product-metrics {
+    grid-template-columns: 1fr 1fr;
+}
+
+.upi-product-grid.is-list-view .upi-product-card-actions {
+    padding-top: 11px;
+}
+
+.upi-product-grid.is-list-view .upi-product-category-badge {
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    max-width: none;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------
+   EMPTY STATE
+   --------------------------------------------------------- */
+
+.upi-empty-state,
+.upi-filter-empty {
+    grid-column: 1 / -1;
+    padding: 42px 20px;
+    border: 1px dashed #D8DCCB;
+    border-radius: 14px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(217, 243, 106, .14), transparent 54%),
+        #FAF9F1;
+    text-align: center;
+}
+
+.upi-empty-art {
+    position: relative;
+    display: grid;
+    width: 102px;
+    height: 102px;
+    place-items: center;
+    margin: 0 auto 19px;
+    border: 1px solid #E3E7D6;
+    border-radius: 27px;
+    background: #F2F4E6;
+}
+
+.upi-empty-art > svg {
+    width: 80px;
+    height: 80px;
+}
+
+.upi-empty-spark {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    color: #91AC47;
+    font-size: 21px;
+}
+
+.upi-empty-state h3,
+.upi-filter-empty h3 {
+    margin: 8px 0;
+    color: var(--upi-forest);
+    font-size: 19px;
+    font-weight: 950;
+    letter-spacing: -.5px;
+}
+
+.upi-empty-state p,
+.upi-filter-empty p {
+    max-width: 390px;
+    margin: 0 auto 17px;
+    color: #85897B;
+    font-size: 10px;
+    line-height: 1.9;
+}
+
+.upi-empty-state .upi-primary-button {
+    display: inline-flex;
+}
+
+.upi-filter-empty-icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    margin: 0 auto 12px;
+    border-radius: 17px;
+    background: #E9EEDC;
+    color: #6B8740;
+    font-size: 33px;
+}
+
+/* Pagination */
+
+.upi-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 23px;
+    padding-top: 18px;
+    border-top: 1px solid #ECE9E0;
+}
+
+.upi-pagination-info {
+    color: #84897C;
+    font-size: 9px;
+}
+
+.upi-pagination-info strong {
+    color: var(--upi-forest);
+    font-weight: 900;
+}
+
+.upi-pagination-links {
+    min-width: 0;
+    color: var(--upi-forest);
+    font-size: 10px;
+}
+
+.upi-pagination-links nav {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.upi-pagination-links nav > div:first-child {
+    display: none;
+}
+
+.upi-pagination-links nav > div:last-child {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.upi-pagination-links a,
+.upi-pagination-links span[aria-current],
+.upi-pagination-links nav button {
+    display: inline-grid;
+    min-width: 31px;
+    height: 31px;
+    place-items: center;
+    padding: 0 8px;
+    border: 1px solid #E3E0D4;
+    border-radius: 7px;
+    background: #FFFDF7;
+    color: #61705A;
+}
+
+.upi-pagination-links a:hover {
+    border-color: #C1D0A6;
+    background: #F0F5E6;
+}
+
+.upi-pagination-links span[aria-current] {
+    border-color: var(--upi-forest);
+    background: var(--upi-forest);
+    color: white;
+    font-weight: 900;
+}
+
+/* ---------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------- */
+
+.upi-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 24px 2px 28px;
+    color: #929587;
+    font-size: 9px;
+}
+
+.upi-footer > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upi-footer-mark {
+    color: #91A749;
+    font-size: 17px;
+}
+
+.upi-footer strong {
+    color: var(--upi-forest);
+    font-size: 10px;
+    font-weight: 950;
+}
+
+.upi-footer-copy {
+    text-align: right;
+}
+
+/* ---------------------------------------------------------
+   ANIMATIONS
+   --------------------------------------------------------- */
+
+@keyframes upiCardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes upiMenuAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------------------------------------------------------
+   LAPTOP / TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 1250px) {
+    #upiApp > :first-child:not(.upi-main) {
+        flex-basis: 225px;
+        width: 225px;
+    }
+
+    .upi-hero-copy {
+        padding-left: 27px;
+    }
+
+    .upi-hero h1 {
+        font-size: clamp(34px, 3.4vw, 43px);
+    }
+
+    .upi-stats-grid {
+        gap: 10px;
+    }
+
+    .upi-stat-card {
+        padding: 14px 13px 12px;
+    }
+
+    .upi-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .upi-filter-form {
+        grid-template-columns: minmax(180px, 1fr) minmax(135px, .6fr) minmax(125px, .55fr);
+    }
+
+    .upi-filter-submit,
+    .upi-filter-reset {
+        min-height: 39px;
+    }
+}
+
+@media (max-width: 950px) {
+    #upiApp > :first-child:not(.upi-main) {
+        flex-basis: 215px;
+        width: 215px;
+    }
+
+    .upi-topbar {
+        min-height: 68px;
+        padding-right: 21px;
+        padding-left: 21px;
+    }
+
+    .upi-content {
+        padding-right: 21px;
+        padding-left: 21px;
+    }
+
+    .upi-hero {
+        grid-template-columns: minmax(0, 1.1fr) minmax(210px, .9fr);
+    }
+
+    .upi-hero-art {
+        min-height: 280px;
+    }
+
+    .upi-hero-product {
+        width: 165px;
+        min-height: 200px;
+    }
+
+    .upi-hero-orbit-one {
+        width: 200px;
+        height: 200px;
+    }
+
+    .upi-hero-orbit-two {
+        width: 160px;
+        height: 160px;
+    }
+
+    .upi-floating-tag-top {
+        right: 7px;
+    }
+
+    .upi-floating-tag-bottom {
+        right: 6px;
+        font-size: 7px;
+    }
+
+    .upi-quick-filter-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .upi-view-options {
+        align-self: flex-end;
+    }
+
+    .upi-product-grid.is-list-view .upi-product-card {
+        grid-template-columns: 135px minmax(0, 1fr);
+    }
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 720px) {
+    #upiApp {
+        display: block;
+    }
+
+    #upiApp > :first-child:not(.upi-main) {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 60;
+        width: min(84vw, 285px);
+        max-width: 285px;
+        height: 100dvh;
+        min-height: 100dvh;
+        transform: translateX(-105%);
+        transition: transform .24s ease;
+        box-shadow: 10px 0 35px rgba(7, 22, 14, 0);
+    }
+
+    #upiApp > :first-child:not(.upi-main).is-open {
+        transform: translateX(0);
+        box-shadow: 10px 0 35px rgba(7, 22, 14, .22);
+    }
+
+    .upi-sidebar-overlay {
+        position: fixed;
+        z-index: 50;
+        inset: 0;
+        display: block;
+        visibility: hidden;
+        border: 0;
+        background: rgba(13, 31, 21, .46);
+        opacity: 0;
+        transition: opacity .22s ease, visibility .22s ease;
+        cursor: pointer;
+        backdrop-filter: blur(2px);
+    }
+
+    .upi-sidebar-overlay.is-visible {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .upi-main {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .upi-mobile-toggle {
+        display: inline-flex;
+        flex-shrink: 0;
+    }
+
+    .upi-topbar {
+        min-height: 65px;
+        gap: 8px;
+        padding: 10px 15px;
+    }
+
+    .upi-topbar-left,
+    .upi-topbar-right {
+        gap: 9px;
+    }
+
+    .upi-topbar-status {
+        display: none;
+    }
+
+    .upi-user-avatar {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+    }
+
+    .upi-user-info strong {
+        max-width: 100px;
+        font-size: 10px;
+    }
+
+    .upi-user-info > span {
+        font-size: 8px;
+    }
+
+    .upi-breadcrumb {
+        gap: 6px;
+        font-size: 9px;
+    }
+
+    .upi-content {
+        padding: 18px 15px 0;
+    }
+
+    .upi-hero {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: auto;
+        border-radius: 17px;
+    }
+
+    .upi-hero-copy {
+        padding: 25px 20px 0;
+    }
+
+    .upi-hero h1 {
+        margin-top: 15px;
+        font-size: clamp(35px, 9.7vw, 46px);
+        letter-spacing: -2px;
+    }
+
+    .upi-hero-copy > p {
+        max-width: 440px;
+        font-size: 10.5px;
+    }
+
+    .upi-hero-actions {
+        gap: 12px;
+        margin-top: 19px;
+    }
+
+    .upi-hero-caption {
+        font-size: 8px;
+    }
+
+    .upi-hero-art {
+        min-height: 237px;
+    }
+
+    .upi-hero-product {
+        width: 165px;
+        min-height: 183px;
+        padding: 11px;
+    }
+
+    .upi-hero-bag {
+        width: 73px;
+        height: 77px;
+    }
+
+    .upi-hero-product-bottom strong {
+        font-size: 11px;
+    }
+
+    .upi-hero-orbit-one {
+        width: 195px;
+        height: 195px;
+    }
+
+    .upi-hero-orbit-two {
+        width: 160px;
+        height: 160px;
+    }
+
+    .upi-floating-tag-top {
+        top: 21px;
+        right: 15px;
+    }
+
+    .upi-floating-tag-bottom {
+        right: 15px;
+        bottom: 22px;
+    }
+
+    .upi-section-heading {
+        align-items: flex-start;
+        margin: 28px 0 16px;
+    }
+
+    .upi-section-heading h2 {
+        font-size: 22px;
+    }
+
+    .upi-section-heading p {
+        max-width: 280px;
+        font-size: 9px;
+    }
+
+    .upi-section-heading > .upi-secondary-button {
+        min-height: 35px;
+        padding: 0 9px;
+        font-size: 9px;
+    }
+
+    .upi-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .upi-stat-card {
+        padding: 13px 12px 11px;
+        border-radius: 12px;
+    }
+
+    .upi-stat-icon {
+        flex-basis: 32px;
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+    }
+
+    .upi-stat-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .upi-stat-label {
+        font-size: 6.5px;
+    }
+
+    .upi-stat-value {
+        margin-top: 14px;
+        font-size: 28px;
+    }
+
+    .upi-stat-description {
+        min-height: 27px;
+        font-size: 8px;
+    }
+
+    .upi-stat-bottom {
+        gap: 6px;
+        padding-top: 9px;
+        margin-top: 7px;
+    }
+
+    .upi-stat-bottom > span:last-child {
+        font-size: 7px;
+    }
+
+    .upi-catalog-panel {
+        margin-top: 17px;
+        padding: 16px 13px;
+        border-radius: 14px;
+    }
+
+    .upi-catalog-heading {
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+
+    .upi-catalog-heading h2 {
+        font-size: 16px;
+    }
+
+    .upi-catalog-heading p {
+        max-width: 230px;
+        font-size: 9px;
+        line-height: 1.7;
+    }
+
+    .upi-catalog-add {
+        min-height: 35px;
+        padding: 0 8px;
+        font-size: 8px;
+    }
+
+    .upi-filter-form {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .upi-search-field {
+        grid-column: 1 / -1;
+    }
+
+    .upi-filter-select {
+        min-height: 39px;
+    }
+
+    .upi-filter-select select {
+        font-size: 9px;
+    }
+
+    .upi-filter-submit,
+    .upi-filter-reset {
+        min-height: 37px;
+    }
+
+    .upi-quick-filter-row {
+        gap: 10px;
+        padding: 13px 0;
+    }
+
+    .upi-quick-filters {
+        gap: 4px;
+    }
+
+    .upi-quick-filter {
+        min-height: 29px;
+        padding: 0 7px;
+        font-size: 8px;
+    }
+
+    .upi-view-options {
+        width: 100%;
+        gap: 6px;
+    }
+
+    .upi-view-options > label {
+        margin-right: auto;
+    }
+
+    .upi-view-options > select {
+        max-width: 130px;
+    }
+
+    .upi-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding-top: 14px;
+    }
+
+    .upi-product-image-wrap {
+        height: 137px;
+    }
+
+    .upi-product-body {
+        padding: 10px;
+    }
+
+    .upi-product-title-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .upi-product-name {
+        font-size: 11px;
+    }
+
+    .upi-product-id {
+        font-size: 6.5px;
+    }
+
+    .upi-status-chip {
+        align-self: flex-start;
+        max-width: 100%;
+        padding: 4px 6px;
+        font-size: 7px;
+    }
+
+    .upi-product-description {
+        min-height: 32px;
+        margin-top: 8px;
+        font-size: 8px;
+    }
+
+    .upi-product-price > span,
+    .upi-product-stock > span {
+        font-size: 6px;
+    }
+
+    .upi-product-price > strong {
+        font-size: 12px;
+    }
+
+    .upi-product-stock {
+        padding-left: 8px;
+    }
+
+    .upi-product-stock > strong {
+        font-size: 14px;
+    }
+
+    .upi-product-stock > strong > small {
+        font-size: 7px;
+    }
+
+    .upi-product-card-actions {
+        gap: 5px;
+        padding-top: 11px;
+    }
+
+    .upi-product-edit-button {
+        min-height: 33px;
+        gap: 5px;
+        padding: 0 6px;
+        font-size: 8px;
+    }
+
+    .upi-product-edit-button svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .upi-product-action-decoration {
+        width: 29px;
+        height: 32px;
+        flex-basis: 29px;
+        font-size: 14px;
+    }
+
+    .upi-product-grid.is-list-view .upi-product-card {
+        grid-template-columns: 110px minmax(0, 1fr);
+    }
+
+    .upi-product-grid.is-list-view .upi-product-image-wrap {
+        min-height: 100%;
+    }
+
+    .upi-product-grid.is-list-view .upi-product-body {
+        padding: 10px;
+    }
+
+    .upi-product-grid.is-list-view .upi-product-title-row {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .upi-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .upi-pagination-links {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .upi-pagination-links nav {
+        justify-content: flex-start;
+    }
+
+    .upi-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+        padding-bottom: 22px;
+    }
+
+    .upi-footer-copy {
+        text-align: left;
+    }
+}
+
+@media (max-width: 390px) {
+    .upi-section-heading {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .upi-section-heading > .upi-secondary-button {
+        align-self: flex-start;
+    }
+
+    .upi-catalog-heading {
+        flex-direction: column;
+    }
+
+    .upi-catalog-add {
+        align-self: flex-start;
+    }
+
+    .upi-product-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-card {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        overflow: visible;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-image-wrap {
+        height: 100%;
+        min-height: 190px;
+        border-radius: 13px 0 0 13px;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-image-wrap > .upi-product-image,
+    .upi-product-grid:not(.is-list-view) .upi-product-image-wrap > .upi-product-image-fallback {
+        border-radius: 13px 0 0 13px;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-body {
+        padding: 11px;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-category-badge {
+        right: 5px;
+        bottom: 5px;
+        left: 5px;
+        max-width: none;
+        padding: 5px;
+        font-size: 7px;
+        text-align: center;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-title-row {
+        flex-direction: column;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-description {
+        min-height: 0;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-card-actions {
+        align-items: stretch;
+    }
+
+    .upi-product-grid:not(.is-list-view) .upi-product-edit-button {
+        font-size: 8px;
+    }
+
+    .upi-quick-filters {
+        gap: 3px;
+    }
+
+    .upi-quick-filter {
+        padding: 0 6px;
+        font-size: 7.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #upiApp *,
+    #upiApp *::before,
+    #upiApp *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* FIX: cegah jarak sidebar dan konten menjadi ganda */
+#upiApp > .seller-main.upi-main {
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    margin-left: 0 !important;
+}
+
+/* Pastikan konten mengikuti lebar area utama */
+#upiApp > .seller-main.upi-main > .upi-content {
+    width: 100%;
+    max-width: 1500px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Mobile: konten tetap memenuhi layar */
+@media (max-width: 720px) {
+    #upiApp > .seller-main.upi-main {
+        width: 100%;
+        min-width: 0;
+        margin-left: 0 !important;
+    }
+}

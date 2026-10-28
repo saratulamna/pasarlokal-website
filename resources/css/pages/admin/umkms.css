@@ -1,0 +1,1149 @@
+
+/* =========================================================
+   PASARLOKAL — ADMIN VERIFIKASI UMKM
+   Premium Dashboard • Forest Green • Ivory • Lime
+   File: resources/css/pages/admin/umkms.css
+   ========================================================= */
+
+/* =========================
+   01. DESIGN TOKENS
+========================= */
+
+.admin-umkm-page {
+    --umkm-bg: #f7f4ea;
+    --umkm-bg-deep: #eee9dc;
+    --umkm-surface: #fffdf7;
+    --umkm-white: #ffffff;
+
+    --umkm-forest: #193b2c;
+    --umkm-forest-deep: #10291e;
+    --umkm-forest-light: #28543e;
+
+    --umkm-ink: #202b23;
+    --umkm-text: #465145;
+    --umkm-muted: #83897e;
+
+    --umkm-border: #e7e5da;
+    --umkm-border-strong: #d9dfcf;
+
+    --umkm-lime: #d9f36a;
+    --umkm-lime-soft: #f0f6df;
+
+    --umkm-green: #47743b;
+    --umkm-green-bg: #edf6e7;
+
+    --umkm-orange: #a66c20;
+    --umkm-orange-bg: #fff5df;
+
+    --umkm-red: #b44f43;
+    --umkm-red-bg: #fff0ec;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 0 38px;
+
+    color: var(--umkm-ink);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+
+    animation: umkm-enter .4s ease both;
+}
+
+.admin-umkm-page *,
+.admin-umkm-page *::before,
+.admin-umkm-page *::after {
+    box-sizing: border-box;
+}
+
+.admin-umkm-page button,
+.admin-umkm-page input,
+.admin-umkm-page select,
+.admin-umkm-page textarea {
+    font: inherit;
+}
+
+.admin-umkm-page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.admin-umkm-page img {
+    display: block;
+    max-width: 100%;
+}
+
+.admin-umkm-page button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes umkm-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   02. PAGE INTRO
+========================= */
+
+.admin-umkm-page .page-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 26px;
+
+    margin: 0 0 28px;
+    padding: 7px 0 25px;
+
+    border-bottom: 1px solid var(--umkm-border);
+    background: transparent;
+}
+
+.admin-umkm-page .page-intro-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-umkm-page .section-kicker {
+    margin: 0 0 9px;
+
+    color: #78856f;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.admin-umkm-page .page-intro h1 {
+    margin: 0;
+    padding: 0;
+
+    color: var(--umkm-forest-deep);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 850;
+    letter-spacing: -1.7px;
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+}
+
+.admin-umkm-page .page-intro h1 span {
+    color: #68833d;
+}
+
+.admin-umkm-page .page-description {
+    max-width: 610px;
+    margin: 12px 0 0;
+
+    color: var(--umkm-muted);
+    font-size: 13px;
+    font-weight: 450;
+    line-height: 1.85;
+}
+
+.admin-umkm-page .status-pill {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 38px;
+    padding: 9px 13px;
+
+    border: 1px solid #dce7c9;
+    border-radius: 8px;
+
+    background: var(--umkm-lime-soft);
+    color: var(--umkm-forest);
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.admin-umkm-page .status-pill > span {
+    position: relative;
+
+    display: inline-block;
+    flex: 0 0 8px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #85a94c;
+
+    box-shadow: 0 0 0 4px rgb(133 169 76 / 14%);
+}
+
+
+/* =========================
+   03. FLASH NOTIFICATIONS
+========================= */
+
+.admin-umkm-page .portal-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0 0 18px;
+    padding: 13px 16px;
+
+    border: 1px solid #cbdcba;
+    border-radius: 10px;
+
+    background: #edf5e5;
+    color: var(--umkm-forest);
+
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.admin-umkm-page .portal-alert::before {
+    display: grid;
+    flex: 0 0 25px;
+    place-items: center;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 7px;
+
+    background: var(--umkm-forest);
+    color: var(--umkm-lime);
+
+    content: "✓";
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.admin-umkm-page .portal-alert-error {
+    border-color: #efcfca;
+    background: var(--umkm-red-bg);
+    color: #963f35;
+}
+
+.admin-umkm-page .portal-alert-error::before {
+    background: #a9443a;
+    color: #ffffff;
+    content: "!";
+}
+
+
+/* =========================
+   04. STATISTIC GRID
+========================= */
+
+.admin-umkm-page .umkm-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+
+    margin: 0 0 28px;
+}
+
+.admin-umkm-page .umkm-stat-card {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    min-height: 155px;
+    padding: 21px 20px 18px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--umkm-border);
+    border-radius: 12px;
+
+    background: var(--umkm-surface);
+    box-shadow: 0 3px 12px rgb(32 43 35 / 3%);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.admin-umkm-page .umkm-stat-card::after {
+    position: absolute;
+    z-index: -1;
+    top: -43px;
+    right: -39px;
+
+    width: 112px;
+    height: 112px;
+
+    border: 1px solid rgb(25 59 44 / 7%);
+    border-radius: 50%;
+
+    content: "";
+    pointer-events: none;
+}
+
+.admin-umkm-page .umkm-stat-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #d5dfc9;
+    box-shadow: 0 10px 24px rgb(32 43 35 / 6%);
+}
+
+.admin-umkm-page .umkm-stat-label {
+    display: block;
+    margin: 0 0 14px;
+
+    color: #777f72;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.2px;
+    line-height: 1.6;
+}
+
+.admin-umkm-page .umkm-stat-card > strong {
+    display: block;
+    margin: 0;
+
+    color: var(--umkm-forest-deep);
+    font-size: clamp(28px, 2.5vw, 37px);
+    font-weight: 850;
+    letter-spacing: -1.6px;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.admin-umkm-page .umkm-stat-foot {
+    display: block;
+    margin-top: 12px;
+
+    color: #858b80;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+.admin-umkm-page .pending-stat {
+    border-color: #f0e3ce;
+    background: #fff9ef;
+}
+
+.admin-umkm-page .pending-stat .umkm-stat-label {
+    color: #a97532;
+}
+
+.admin-umkm-page .active-stat {
+    border-color: #dce9d2;
+    background: #f3f8ee;
+}
+
+.admin-umkm-page .active-stat .umkm-stat-label {
+    color: #5f8145;
+}
+
+.admin-umkm-page .rejected-stat {
+    border-color: #f0dfda;
+    background: #fff6f3;
+}
+
+.admin-umkm-page .rejected-stat .umkm-stat-label {
+    color: #b26457;
+}
+
+
+/* =========================
+   05. MANAGEMENT PANEL
+========================= */
+
+.admin-umkm-page .umkm-management-panel {
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--umkm-border);
+    border-radius: 14px;
+
+    background: var(--umkm-surface);
+    box-shadow: 0 5px 22px rgb(32 43 35 / 4%);
+}
+
+.admin-umkm-page .umkm-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 23px 24px 20px;
+
+    background: var(--umkm-surface);
+}
+
+.admin-umkm-page .umkm-panel-heading > div {
+    min-width: 0;
+}
+
+.admin-umkm-page .umkm-panel-heading .section-kicker {
+    margin-bottom: 5px;
+}
+
+.admin-umkm-page .umkm-panel-heading h2 {
+    margin: 0;
+
+    color: var(--umkm-forest-deep);
+    font-size: 23px;
+    font-weight: 850;
+    letter-spacing: -.7px;
+    line-height: 1.4;
+}
+
+.admin-umkm-page .umkm-total {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 32px;
+    padding: 6px 11px;
+
+    border: 1px solid #dce5d3;
+    border-radius: 7px;
+
+    background: #f0f5e8;
+    color: var(--umkm-forest);
+
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   06. STATUS FILTERS
+========================= */
+
+.admin-umkm-page .umkm-filters {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    min-width: 0;
+    padding: 0 24px 18px;
+
+    overflow-x: auto;
+    border-bottom: 1px solid var(--umkm-border);
+
+    scrollbar-width: thin;
+    scrollbar-color: #d2dac8 transparent;
+}
+
+.admin-umkm-page .umkm-filter {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+    padding: 8px 13px;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    background: transparent;
+    color: #737b70;
+
+    font-size: 11px;
+    font-weight: 750;
+    line-height: 1.4;
+    white-space: nowrap;
+    cursor: pointer;
+
+    transition:
+        color .18s ease,
+        background .18s ease,
+        border-color .18s ease;
+}
+
+.admin-umkm-page .umkm-filter:hover {
+    border-color: #e1e8d8;
+    background: #f5f7ef;
+    color: var(--umkm-forest);
+}
+
+.admin-umkm-page .umkm-filter.is-active {
+    border-color: var(--umkm-forest);
+    background: var(--umkm-forest);
+    color: var(--umkm-surface);
+
+    box-shadow: 0 3px 7px rgb(25 59 44 / 12%);
+}
+
+.admin-umkm-page .umkm-filter:focus-visible {
+    outline: 3px solid rgb(163 193 105 / 65%);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   07. TABLE WRAPPER
+========================= */
+
+.admin-umkm-page .umkm-table-wrap {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5c4 #f5f4ed;
+}
+
+.admin-umkm-page .umkm-table {
+    width: 100%;
+    min-width: 790px;
+
+    margin: 0;
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: transparent;
+    text-align: left;
+}
+
+.admin-umkm-page .umkm-table thead th {
+    padding: 14px 17px;
+
+    border: 0;
+    border-bottom: 1px solid var(--umkm-border);
+
+    background: #f8f7f1;
+    color: #808578;
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.05px;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+
+.admin-umkm-page .umkm-table thead th:first-child,
+.admin-umkm-page .umkm-table tbody td:first-child {
+    padding-left: 24px;
+}
+
+.admin-umkm-page .umkm-table thead th:last-child,
+.admin-umkm-page .umkm-table tbody td:last-child {
+    padding-right: 24px;
+}
+
+.admin-umkm-page .umkm-table tbody td {
+    padding: 17px;
+
+    border: 0;
+    border-bottom: 1px solid #efeee7;
+
+    background: transparent;
+    color: var(--umkm-text);
+
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 1.6;
+    vertical-align: middle;
+
+    transition: background .18s ease;
+}
+
+.admin-umkm-page .umkm-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.admin-umkm-page .umkm-table tbody tr:hover td {
+    background: #fbfbf6;
+}
+
+.admin-umkm-page .umkm-action-heading {
+    text-align: right;
+}
+
+
+/* =========================
+   08. STORE AND OWNER INFO
+========================= */
+
+.admin-umkm-page .umkm-owner-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 220px;
+}
+
+.admin-umkm-page .umkm-avatar {
+    display: grid;
+    flex: 0 0 43px;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+
+    border: 1px solid #dce6d2;
+    border-radius: 11px;
+
+    background: linear-gradient(145deg, #edf4df, #dce9c8);
+    color: var(--umkm-forest);
+
+    font-size: 17px;
+    font-weight: 850;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.admin-umkm-page .umkm-owner-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+
+    min-width: 0;
+}
+
+.admin-umkm-page .umkm-owner-info strong {
+    display: block;
+    max-width: 250px;
+
+    overflow: hidden;
+
+    color: var(--umkm-forest-deep);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.5;
+
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+}
+
+.admin-umkm-page .umkm-owner-info small {
+    display: block;
+    max-width: 250px;
+
+    overflow: hidden;
+
+    color: #858b80;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.55;
+
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================
+   09. STATUS BADGES
+========================= */
+
+.admin-umkm-page .umkm-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 27px;
+    padding: 5px 10px;
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+.admin-umkm-page .umkm-status::before {
+    display: block;
+    flex: 0 0 6px;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: currentColor;
+
+    content: "";
+}
+
+.admin-umkm-page .status-active {
+    border-color: #d7e8ce;
+    background: var(--umkm-green-bg);
+    color: var(--umkm-green);
+}
+
+.admin-umkm-page .status-pending {
+    border-color: #f0dfbd;
+    background: var(--umkm-orange-bg);
+    color: var(--umkm-orange);
+}
+
+.admin-umkm-page .status-rejected {
+    border-color: #f0d5d0;
+    background: var(--umkm-red-bg);
+    color: var(--umkm-red);
+}
+
+.admin-umkm-page .umkm-date {
+    color: #7c8478;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================
+   10. ACTION BUTTONS
+========================= */
+
+.admin-umkm-page .umkm-action-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+
+    min-width: 145px;
+}
+
+.admin-umkm-page .umkm-action-group form {
+    display: inline-flex;
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 0;
+}
+
+.admin-umkm-page .umkm-action-group button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 33px;
+    padding: 7px 11px;
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.4;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease;
+}
+
+.admin-umkm-page .umkm-action-group button:active {
+    transform: scale(.97);
+}
+
+.admin-umkm-page .umkm-action-group button:focus-visible {
+    outline: 3px solid rgb(163 193 105 / 65%);
+    outline-offset: 3px;
+}
+
+.admin-umkm-page .umkm-approve-button {
+    border-color: var(--umkm-forest) !important;
+    background: var(--umkm-forest) !important;
+    color: #ffffff !important;
+}
+
+.admin-umkm-page .umkm-approve-button:hover {
+    border-color: var(--umkm-forest-deep) !important;
+    background: var(--umkm-forest-deep) !important;
+
+    box-shadow: 0 3px 8px rgb(25 59 44 / 16%);
+}
+
+.admin-umkm-page .umkm-reject-button {
+    border-color: #f0d8d3 !important;
+    background: #fff5f2 !important;
+    color: #ac493e !important;
+}
+
+.admin-umkm-page .umkm-reject-button:hover {
+    border-color: #e9bdb5 !important;
+    background: #fbe6e1 !important;
+}
+
+.admin-umkm-page .umkm-no-action {
+    display: block;
+    min-width: 145px;
+
+    color: #b6b9af;
+    font-size: 14px;
+    text-align: right;
+}
+
+
+/* =========================
+   11. PAGINATION
+========================= */
+
+.admin-umkm-page .umkm-pagination {
+    display: block;
+
+    padding: 17px 24px;
+
+    border-top: 1px solid var(--umkm-border);
+    background: #fffef9;
+}
+
+.admin-umkm-page .umkm-pagination nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    width: 100%;
+}
+
+.admin-umkm-page .umkm-pagination nav > div {
+    min-width: 0;
+}
+
+.admin-umkm-page .umkm-pagination p {
+    margin: 0;
+
+    color: #82877d;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.admin-umkm-page .umkm-pagination nav a,
+.admin-umkm-page .umkm-pagination nav span[aria-current="page"] > span,
+.admin-umkm-page .umkm-pagination nav span[aria-disabled="true"] > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 33px;
+    min-height: 33px;
+    margin: 0 2px;
+    padding: 6px 10px;
+
+    border: 1px solid #e6e7dd;
+    border-radius: 6px;
+
+    background: var(--umkm-surface);
+    color: #606b5d;
+
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        background .18s ease,
+        color .18s ease,
+        border-color .18s ease;
+}
+
+.admin-umkm-page .umkm-pagination nav a:hover {
+    border-color: #d2dfc5;
+    background: #eff5e7;
+    color: var(--umkm-forest);
+}
+
+.admin-umkm-page .umkm-pagination nav span[aria-current="page"] > span {
+    border-color: var(--umkm-forest);
+    background: var(--umkm-forest);
+    color: #ffffff;
+}
+
+.admin-umkm-page .umkm-pagination nav span[aria-disabled="true"] > span {
+    color: #b6b9af;
+    cursor: not-allowed;
+}
+
+.admin-umkm-page .umkm-pagination nav svg {
+    width: 15px;
+    height: 15px;
+}
+
+
+/* =========================
+   12. EMPTY STATE
+========================= */
+
+.admin-umkm-page .umkm-empty-state {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 270px;
+    padding: 35px 22px;
+
+    text-align: center;
+}
+
+.admin-umkm-page .umkm-empty-icon {
+    display: grid;
+    place-items: center;
+
+    width: 58px;
+    height: 58px;
+    margin: 0 0 17px;
+
+    border: 1px solid #e0e8d1;
+    border-radius: 16px;
+
+    background: #f0f5e6;
+    color: #68833d;
+
+    font-size: 27px;
+    line-height: 1;
+}
+
+.admin-umkm-page .umkm-empty-state h3 {
+    max-width: 100%;
+    margin: 0;
+
+    color: var(--umkm-forest-deep);
+    font-size: 17px;
+    font-weight: 850;
+    letter-spacing: -.35px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.admin-umkm-page .umkm-empty-state p {
+    max-width: 410px;
+    margin: 9px 0 0;
+
+    color: #858b80;
+    font-size: 12px;
+    font-weight: 450;
+    line-height: 1.85;
+}
+
+.admin-umkm-page .umkm-empty-state > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+    padding: 8px 13px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   13. TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+    .admin-umkm-page .umkm-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .admin-umkm-page .umkm-stat-card {
+        min-height: 140px;
+    }
+
+    .admin-umkm-page .umkm-table {
+        min-width: 770px;
+    }
+}
+
+
+/* =========================
+   14. MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 640px) {
+    .admin-umkm-page {
+        padding: 2px 0 24px;
+    }
+
+    .admin-umkm-page .page-intro {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .admin-umkm-page .page-intro h1 {
+        font-size: clamp(27px, 8vw, 35px);
+        letter-spacing: -1.15px;
+    }
+
+    .admin-umkm-page .section-kicker {
+        font-size: 9px;
+        letter-spacing: 1.6px;
+    }
+
+    .admin-umkm-page .page-description {
+        margin-top: 9px;
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .admin-umkm-page .status-pill {
+        min-height: 34px;
+        padding: 8px 11px;
+        font-size: 9px;
+    }
+
+    .admin-umkm-page .umkm-stat-grid {
+        gap: 9px;
+        margin-bottom: 21px;
+    }
+
+    .admin-umkm-page .umkm-stat-card {
+        min-height: 126px;
+        padding: 15px 13px;
+
+        border-radius: 10px;
+    }
+
+    .admin-umkm-page .umkm-stat-label {
+        margin-bottom: 11px;
+        font-size: 8px;
+        letter-spacing: .7px;
+    }
+
+    .admin-umkm-page .umkm-stat-card > strong {
+        font-size: 28px;
+    }
+
+    .admin-umkm-page .umkm-stat-foot {
+        margin-top: 8px;
+        font-size: 9px;
+    }
+
+    .admin-umkm-page .umkm-management-panel {
+        border-radius: 11px;
+    }
+
+    .admin-umkm-page .umkm-panel-heading {
+        align-items: flex-start;
+        gap: 10px;
+
+        padding: 18px 15px 16px;
+    }
+
+    .admin-umkm-page .umkm-panel-heading h2 {
+        font-size: 20px;
+        letter-spacing: -.5px;
+    }
+
+    .admin-umkm-page .umkm-total {
+        min-height: 29px;
+        padding: 5px 8px;
+        font-size: 9px;
+    }
+
+    .admin-umkm-page .umkm-filters {
+        gap: 5px;
+        padding: 0 14px 14px;
+    }
+
+    .admin-umkm-page .umkm-filter {
+        min-height: 33px;
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    .admin-umkm-page .umkm-table {
+        min-width: 760px;
+    }
+
+    .admin-umkm-page .umkm-table thead th {
+        padding: 12px;
+        font-size: 8px;
+        letter-spacing: .8px;
+    }
+
+    .admin-umkm-page .umkm-table tbody td {
+        padding: 13px 12px;
+    }
+
+    .admin-umkm-page .umkm-table thead th:first-child,
+    .admin-umkm-page .umkm-table tbody td:first-child {
+        padding-left: 15px;
+    }
+
+    .admin-umkm-page .umkm-table thead th:last-child,
+    .admin-umkm-page .umkm-table tbody td:last-child {
+        padding-right: 15px;
+    }
+
+    .admin-umkm-page .umkm-pagination {
+        padding: 14px;
+    }
+
+    .admin-umkm-page .umkm-pagination nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .admin-umkm-page .umkm-empty-state {
+        min-height: 230px;
+        padding: 28px 17px;
+    }
+
+    .admin-umkm-page .umkm-empty-state h3 {
+        font-size: 15px;
+    }
+
+    .admin-umkm-page .umkm-empty-state p {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================
+   15. ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-umkm-page,
+    .admin-umkm-page *,
+    .admin-umkm-page *::before,
+    .admin-umkm-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}

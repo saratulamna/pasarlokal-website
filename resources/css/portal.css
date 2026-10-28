@@ -1,0 +1,669 @@
+
+/* =========================================================
+   PASARLOKAL — SHARED ADMIN PORTAL
+   Sidebar • Header • Layout
+   Forest Green / Ivory / Lime
+   File: resources/css/portal.css
+   ========================================================= */
+
+:root {
+    --portal-forest: #193b2c;
+    --portal-forest-deep: #10291e;
+    --portal-forest-light: #28543e;
+    --portal-paper: #f7f4ea;
+    --portal-surface: #fffdf7;
+    --portal-white: #ffffff;
+    --portal-lime: #d9f36a;
+    --portal-ink: #202b23;
+    --portal-muted: #83897e;
+    --portal-border: #e7e5da;
+}
+
+/* =========================================================
+   01. GLOBAL LAYOUT
+   ========================================================= */
+
+.portal-body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--portal-paper);
+    color: var(--portal-ink);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.portal-body *,
+.portal-body *::before,
+.portal-body *::after {
+    box-sizing: border-box;
+}
+
+.portal-body a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.portal-body button,
+.portal-body input,
+.portal-body select,
+.portal-body textarea {
+    font: inherit;
+}
+
+.portal-app {
+    display: grid;
+    grid-template-columns: 258px minmax(0, 1fr);
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Pastikan area kerja tidak melebar karena isi tabel */
+.portal-main {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+
+.portal-main > * {
+    min-width: 0;
+}
+
+/* =========================================================
+   02. SIDEBAR
+   ========================================================= */
+
+.portal-sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 258px;
+    height: 100vh;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    border-right: 1px solid rgb(255 255 255 / 7%);
+    background: var(--portal-forest-deep);
+    color: var(--portal-surface);
+
+    scrollbar-color: rgb(255 255 255 / 18%) transparent;
+    scrollbar-width: thin;
+}
+
+.portal-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.portal-sidebar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgb(255 255 255 / 18%);
+}
+
+.sidebar-inner {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100%;
+
+    padding: 27px 17px 20px;
+}
+
+/* =========================================================
+   03. BRAND
+   ========================================================= */
+
+.portal-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+
+    width: 100%;
+    margin: 0 0 37px;
+    padding: 2px 9px 25px;
+
+    border-bottom: 1px solid rgb(255 255 255 / 11%);
+}
+
+.portal-brand-image {
+    display: block;
+
+    width: 100%;
+    max-width: 173px;
+    max-height: 76px;
+    height: auto;
+
+    object-fit: contain;
+    object-position: left center;
+}
+
+.portal-brand-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #c2d4b8;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+
+.portal-brand-caption::before {
+    display: block;
+    width: 19px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--portal-lime);
+    content: "";
+}
+
+/* =========================================================
+   04. NAVIGATION LABEL
+   ========================================================= */
+
+.sidebar-label {
+    margin: 0 0 12px;
+    padding: 0 11px;
+
+    color: #84998b;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.7px;
+    line-height: 1.7;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   05. NAVIGATION LINKS
+   ========================================================= */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    min-height: 47px;
+    padding: 10px 11px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #d0dbd0;
+
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.5;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.sidebar-link:hover {
+    border-color: rgb(255 255 255 / 8%);
+    background: rgb(255 255 255 / 6%);
+    color: #ffffff;
+}
+
+.sidebar-link:active {
+    transform: scale(.985);
+}
+
+.sidebar-link.is-active {
+    border-color: rgb(217 243 106 / 23%);
+    background: rgb(217 243 106 / 11%);
+    color: var(--portal-lime);
+}
+
+.sidebar-link.is-active::before {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: -1px;
+
+    width: 3px;
+    border-radius: 0 4px 4px 0;
+
+    background: var(--portal-lime);
+    content: "";
+}
+
+.sidebar-link .nav-icon {
+    display: inline-flex;
+    flex: 0 0 31px;
+    align-items: center;
+    justify-content: center;
+
+    width: 31px;
+    height: 30px;
+
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 6px;
+
+    background: rgb(255 255 255 / 5%);
+    color: #afc0b1;
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .5px;
+    font-variant-numeric: tabular-nums;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.sidebar-link.is-active .nav-icon {
+    border-color: rgb(217 243 106 / 30%);
+    background: var(--portal-lime);
+    color: var(--portal-forest-deep);
+}
+
+.sidebar-link > span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.sidebar-link:focus-visible,
+.portal-brand:focus-visible,
+.sidebar-home:focus-visible {
+    outline: 3px solid var(--portal-lime);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   06. SIDEBAR INFORMATION CARD
+   ========================================================= */
+
+.sidebar-note {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 19px;
+    padding: 17px 14px;
+
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgb(255 255 255 / 6%),
+            rgb(255 255 255 / 2%)
+        );
+}
+
+.note-mark {
+    display: grid;
+    place-items: center;
+
+    width: 31px;
+    height: 31px;
+
+    border: 1px solid rgb(217 243 106 / 22%);
+    border-radius: 8px;
+
+    background: rgb(217 243 106 / 11%);
+    color: var(--portal-lime);
+
+    font-size: 18px;
+    line-height: 1;
+}
+
+.sidebar-note p {
+    margin: 0;
+    color: #bccbbe;
+    font-size: 10px;
+    font-weight: 450;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+.sidebar-note strong {
+    color: var(--portal-surface);
+    font-weight: 750;
+}
+
+/* =========================================================
+   07. BACK TO HOMEPAGE
+   ========================================================= */
+
+.sidebar-home {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 11px;
+
+    border: 1px solid rgb(255 255 255 / 11%);
+    border-radius: 7px;
+
+    background: transparent;
+    color: #d1ded0;
+
+    font-size: 11px;
+    font-weight: 650;
+    line-height: 1.5;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.sidebar-home:hover {
+    border-color: rgb(217 243 106 / 25%);
+    background: rgb(217 243 106 / 8%);
+    color: var(--portal-lime);
+}
+
+.sidebar-home > span:first-child {
+    color: var(--portal-lime);
+    font-size: 15px;
+    line-height: 1;
+}
+
+/* =========================================================
+   08. TOPBAR
+   ========================================================= */
+
+.portal-topbar {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    min-height: 81px;
+    width: 100%;
+    padding: 15px 32px;
+
+    border-bottom: 1px solid var(--portal-border);
+    background: rgb(255 253 247 / 96%);
+}
+
+.portal-topbar > * {
+    min-width: 0;
+}
+
+.topbar-eyebrow {
+    margin: 0 0 3px;
+
+    color: #82897c;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.7px;
+    line-height: 1.5;
+}
+
+.portal-topbar h1,
+.portal-topbar h2 {
+    margin: 0;
+
+    color: var(--portal-forest-deep);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -.3px;
+    line-height: 1.5;
+}
+
+.portal-topbar p {
+    overflow-wrap: anywhere;
+}
+
+.portal-topbar button {
+    cursor: pointer;
+}
+
+/* =========================================================
+   09. CONTENT WRAPPERS
+   ========================================================= */
+
+.portal-content {
+    width: 100%;
+    max-width: 1600px;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 28px 32px;
+}
+
+/* Area konten lain yang mungkin digunakan layout */
+.portal-page-content {
+    width: 100%;
+    max-width: 1600px;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 28px 32px;
+}
+
+/* =========================================================
+   10. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .portal-app {
+        grid-template-columns: 235px minmax(0, 1fr);
+    }
+
+    .portal-sidebar {
+        width: 235px;
+    }
+
+    .sidebar-inner {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .portal-brand-image {
+        max-width: 160px;
+    }
+
+    .portal-content,
+    .portal-page-content {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .portal-topbar {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+}
+
+@media (max-width: 900px) {
+    .portal-app {
+        grid-template-columns: 215px minmax(0, 1fr);
+    }
+
+    .portal-sidebar {
+        width: 215px;
+    }
+
+    .sidebar-inner {
+        padding: 22px 12px 16px;
+    }
+
+    .portal-brand {
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+
+    .portal-brand-image {
+        max-width: 150px;
+    }
+
+    .sidebar-link {
+        gap: 9px;
+        padding-right: 8px;
+        padding-left: 8px;
+        font-size: 11px;
+    }
+
+    .portal-content,
+    .portal-page-content {
+        padding: 22px 18px;
+    }
+
+    .portal-topbar {
+        min-height: 72px;
+        padding: 13px 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .portal-app {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /*
+      Sidebar tetap menjadi elemen layout di layar kecil.
+      Jika portal.js memakai class is-sidebar-open,
+      sidebar dapat ditampilkan kembali dengan aturan ini.
+    */
+    .portal-sidebar {
+        position: relative;
+        top: auto;
+
+        width: 100%;
+        height: auto;
+        min-height: 0;
+
+        overflow: visible;
+    }
+
+    .sidebar-inner {
+        min-height: 0;
+        padding: 17px 15px;
+    }
+
+    .portal-brand {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        margin-bottom: 18px;
+        padding: 0 4px 15px;
+    }
+
+    .portal-brand-image {
+        width: auto;
+        max-width: 145px;
+        max-height: 53px;
+    }
+
+    .portal-brand-caption {
+        font-size: 8px;
+        letter-spacing: 1.3px;
+    }
+
+    .sidebar-label {
+        margin-bottom: 8px;
+        padding: 0 4px;
+    }
+
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .sidebar-link {
+        min-height: 43px;
+        gap: 7px;
+        padding: 7px;
+
+        font-size: 10px;
+    }
+
+    .sidebar-link .nav-icon {
+        flex-basis: 26px;
+        width: 26px;
+        height: 26px;
+        font-size: 8px;
+    }
+
+    .sidebar-note {
+        margin-top: 17px;
+        margin-bottom: 12px;
+        padding: 12px;
+    }
+
+    .sidebar-note p {
+        font-size: 10px;
+    }
+
+    .sidebar-home {
+        min-height: 38px;
+    }
+
+    .portal-topbar {
+        min-height: 64px;
+        gap: 12px;
+        padding: 12px 15px;
+    }
+
+    .portal-topbar h1,
+    .portal-topbar h2 {
+        font-size: 15px;
+    }
+
+    .portal-content,
+    .portal-page-content {
+        padding: 18px 14px;
+    }
+}
+
+/* =========================================================
+   11. ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .portal-body *,
+    .portal-body *::before,
+    .portal-body *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

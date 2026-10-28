@@ -1,0 +1,989 @@
+/* =========================================================
+   PASARLOKAL — PUBLIC DESIGN SYSTEM
+   Premium Marketplace · Refined Neo-Brutalism
+   File: resources/css/public/base.css
+   ========================================================= */
+
+/* ===================== DESIGN TOKENS ===================== */
+:root {
+    --pl-bg: #F7F4EA;
+    --pl-surface: #FFFFFF;
+    --pl-primary: #C8F169;
+    --pl-primary-hover: #B7E653;
+    --pl-secondary: #FF8A65;
+    --pl-ink: #20231F;
+    --pl-muted: #6B7067;
+    --pl-border: 2px solid var(--pl-ink);
+    --pl-shadow: 4px 4px 0 var(--pl-ink);
+    --pl-shadow-hover: 6px 6px 0 var(--pl-ink);
+    --pl-radius: 12px;
+    --pl-radius-lg: 16px;
+    --pl-container: 1240px;
+    --pl-transition: 180ms ease;
+}
+
+/* ===================== RESET ===================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    color: var(--pl-ink);
+    background: var(--pl-bg);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--pl-secondary);
+    outline-offset: 4px;
+}
+
+::selection {
+    color: var(--pl-ink);
+    background: var(--pl-primary);
+}
+
+/* =========================================================
+   PASARLOKAL — PREMIUM PUBLIC HEADER
+   Design: Premium Neo-Brutalism
+   Palette: ORIGINAL — TIDAK DIUBAH
+========================================================= */
+
+/* ===================== PUBLIC HEADER ===================== */
+
+.public-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    isolation: isolate;
+    width: 100%;
+
+    background: rgba(247, 244, 234, 0.94);
+    border-bottom: 1px solid rgba(32, 35, 31, 0.14);
+
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    backdrop-filter: blur(18px) saturate(125%);
+
+    transition:
+        background 220ms ease,
+        border-color 220ms ease;
+}
+
+.public-header-inner {
+    width: min(var(--pl-container), calc(100% - 64px));
+    min-height: 86px;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 34px;
+}
+
+/* ===================== BRAND ===================== */
+
+.public-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    gap: 11px;
+    min-width: max-content;
+
+    color: var(--pl-ink);
+    text-decoration: none;
+
+    transition:
+        transform 220ms cubic-bezier(.2, .8, .2, 1),
+        opacity 220ms ease;
+}
+
+.public-brand:hover {
+    transform: translateY(-2px);
+}
+
+.public-brand:active {
+    transform: translateY(0);
+}
+
+.public-brand-logo {
+    display: block;
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+
+    object-fit: contain;
+    border-radius: 11px;
+
+    transition:
+        transform 260ms cubic-bezier(.2, .8, .2, 1),
+        filter 260ms ease;
+}
+
+.public-brand:hover .public-brand-logo {
+    transform: rotate(-3deg) scale(1.045);
+}
+
+.public-brand-name {
+    color: var(--pl-ink);
+
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1.25px;
+    line-height: 1;
+
+    white-space: nowrap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.public-brand-name span,
+.public-footer-brand span {
+    color: #628B24;
+}
+
+/* ===================== MAIN NAVIGATION ===================== */
+
+.public-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    min-width: 0;
+}
+
+.public-navigation a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 43px;
+    padding: 10px 15px;
+
+    color: #575C53;
+    font-size: 13px;
+    font-weight: 750;
+    letter-spacing: -0.1px;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    transition:
+        color 200ms ease,
+        background 200ms ease,
+        border-color 200ms ease,
+        transform 200ms ease;
+}
+
+/* Garis indikator navigasi */
+
+.public-navigation a::after {
+    content: "";
+    position: absolute;
+
+    right: 15px;
+    bottom: 5px;
+    left: 15px;
+
+    height: 2px;
+    background: var(--pl-ink);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform 220ms ease;
+}
+
+.public-navigation a:hover {
+    color: var(--pl-ink);
+    background: rgba(200, 241, 105, 0.42);
+}
+
+.public-navigation a:hover::after {
+    transform: scaleX(1);
+}
+
+.public-navigation a:active {
+    transform: translateY(1px);
+}
+
+/* Mendukung class active atau aria-current
+   tanpa mewajibkan perubahan HTML */
+
+.public-navigation a.active,
+.public-navigation a[aria-current="page"] {
+    color: var(--pl-ink);
+    background: rgba(200, 241, 105, 0.3);
+}
+
+.public-navigation a.active::after,
+.public-navigation a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+/* ===================== HEADER ACTIONS ===================== */
+
+.public-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    min-width: 0;
+}
+
+/* ===================== LOGIN LINK ===================== */
+
+.public-login-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 45px;
+    padding: 10px 13px;
+
+    color: var(--pl-ink);
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    transition:
+        color 200ms ease,
+        background 200ms ease,
+        border-color 200ms ease,
+        transform 200ms ease;
+}
+
+.public-login-link:hover {
+    color: var(--pl-ink);
+    background: rgba(32, 35, 31, 0.06);
+    border-color: rgba(32, 35, 31, 0.1);
+}
+
+.public-login-link:active {
+    transform: translateY(1px);
+}
+
+/* ===================== CART LINK ===================== */
+
+.public-cart-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 44px;
+    padding: 9px 12px;
+
+    color: var(--pl-ink);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+
+    border: 1px solid rgba(32, 35, 31, 0.2);
+    border-radius: 10px;
+    background: var(--pl-surface);
+
+    transition:
+        border-color 200ms ease,
+        background 200ms ease,
+        box-shadow 200ms ease,
+        transform 200ms ease;
+}
+
+.public-cart-link:hover {
+    border-color: var(--pl-ink);
+    background: var(--pl-primary);
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0 var(--pl-ink);
+}
+
+.public-cart-link:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.public-cart-link span {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* ===================== BUTTON SYSTEM ===================== */
+
+.public-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 47px;
+    padding: 11px 18px;
+
+    color: var(--pl-ink);
+    font-size: 13px;
+    font-weight: 850;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
+    border: var(--pl-border);
+    border-radius: 10px;
+
+    box-shadow: 3px 3px 0 var(--pl-ink);
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        background 200ms ease,
+        color 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        transform 200ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.public-button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--pl-ink);
+}
+
+.public-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--pl-ink);
+}
+
+.public-button-primary {
+    background: var(--pl-primary);
+}
+
+.public-button-primary:hover {
+    background: var(--pl-primary-hover);
+}
+
+.public-button-light {
+    background: var(--pl-surface);
+}
+
+.public-button-light:hover {
+    background: var(--pl-primary);
+}
+
+.public-button span {
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1;
+
+    transition: transform 200ms ease;
+}
+
+.public-button:hover span {
+    transform: translateX(2px);
+}
+
+/* ===================== KEYBOARD ACCESSIBILITY ===================== */
+
+.public-brand:focus-visible,
+.public-navigation a:focus-visible,
+.public-login-link:focus-visible,
+.public-cart-link:focus-visible,
+.public-button:focus-visible {
+    outline: 3px solid var(--pl-ink);
+    outline-offset: 4px;
+}
+
+/* ===================== TABLET ===================== */
+
+@media (max-width: 1100px) {
+    .public-header-inner {
+        width: calc(100% - 40px);
+        gap: 20px;
+    }
+
+    .public-brand-logo {
+        width: 41px;
+        height: 41px;
+        flex-basis: 41px;
+    }
+
+    .public-brand-name {
+        font-size: 23px;
+    }
+
+    .public-navigation {
+        gap: 2px;
+    }
+
+    .public-navigation a {
+        padding-inline: 10px;
+        font-size: 12px;
+    }
+
+    .public-header-actions {
+        gap: 7px;
+    }
+
+    .public-login-link {
+        padding-inline: 10px;
+        font-size: 12px;
+    }
+
+    .public-cart-link {
+        gap: 6px;
+        padding-inline: 9px;
+        font-size: 12px;
+    }
+}
+
+/* ===================== SMALL TABLET ===================== */
+
+@media (max-width: 850px) {
+    .public-header-inner {
+        min-height: 76px;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .public-navigation {
+        grid-column: 1 / -1;
+        grid-row: 2;
+
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0 0 12px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .public-navigation::-webkit-scrollbar {
+        display: none;
+    }
+
+    .public-header-actions {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .public-navigation a {
+        flex: 0 0 auto;
+    }
+}
+
+/* ===================== MOBILE ===================== */
+
+@media (max-width: 560px) {
+    .public-header-inner {
+        width: calc(100% - 28px);
+        min-height: 70px;
+        gap: 10px;
+    }
+
+    .public-brand {
+        gap: 8px;
+    }
+
+    .public-brand-logo {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        border-radius: 9px;
+    }
+
+    .public-brand-name {
+        font-size: 20px;
+        letter-spacing: -0.9px;
+    }
+
+    .public-header-actions {
+        gap: 5px;
+    }
+
+    .public-login-link {
+        min-height: 40px;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .public-cart-link {
+        min-height: 40px;
+        gap: 5px;
+        padding: 8px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .public-cart-link span {
+        font-size: 15px;
+    }
+
+    .public-navigation {
+        gap: 4px;
+        padding-bottom: 10px;
+    }
+
+    .public-navigation a {
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .public-navigation a::after {
+        right: 12px;
+        bottom: 3px;
+        left: 12px;
+    }
+
+    .public-button {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 12px;
+        border-radius: 9px;
+    }
+}
+
+/* ===================== REDUCED MOTION ===================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .public-header,
+    .public-brand,
+    .public-brand-logo,
+    .public-navigation a,
+    .public-navigation a::after,
+    .public-login-link,
+    .public-cart-link,
+    .public-button,
+    .public-button span {
+        scroll-behavior: auto;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+
+/* ===================== MAIN CONTENT ===================== */
+#main-content {
+    min-height: 60vh;
+    width: 100%;
+}
+
+#main-content img {
+    height: auto;
+}
+
+#main-content a {
+    text-underline-offset: 3px;
+}
+
+/* Prevent global image rules from affecting brand logo */
+.public-brand-logo {
+    height: 45px !important;
+}
+
+/* ===================== FOOTER ===================== */
+.public-footer {
+    margin-top: 90px;
+    padding: 42px 0 0;
+    color: var(--pl-ink);
+    background: #EEEBDD;
+    border-top: 2px solid var(--pl-ink);
+}
+
+.public-footer-inner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    width: min(var(--pl-container), calc(100% - 64px));
+    margin-inline: auto;
+    padding-bottom: 30px;
+}
+
+.public-footer-brand {
+    width: fit-content;
+    font-size: 23px;
+    font-weight: 950;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.public-footer-inner p {
+    margin: 0;
+    color: var(--pl-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.public-footer-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 14px;
+    color: var(--pl-ink);
+    font-size: 12px;
+    font-weight: 800;
+    border: 1px solid rgba(32, 35, 31, 0.28);
+    border-radius: 9px;
+    transition:
+        background var(--pl-transition),
+        border-color var(--pl-transition);
+}
+
+.public-footer-top:hover {
+    background: var(--pl-primary);
+    border-color: var(--pl-ink);
+}
+
+.public-footer-bottom {
+    padding: 19px 24px;
+    color: #72756B;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    border-top: 1px solid rgba(32, 35, 31, 0.14);
+}
+
+/* ===================== SHARED FORM ELEMENTS ===================== */
+input,
+select,
+textarea {
+    max-width: 100%;
+    color: var(--pl-ink);
+    background: var(--pl-surface);
+    border: 1.5px solid rgba(32, 35, 31, 0.25);
+    border-radius: 9px;
+}
+
+input,
+select {
+    min-height: 44px;
+    padding: 9px 12px;
+}
+
+textarea {
+    padding: 12px;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #92958B;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--pl-ink);
+}
+
+/* ===================== RESPONSIVE: SMALL DESKTOP ===================== */
+@media (max-width: 1100px) {
+    .public-header-inner {
+        width: calc(100% - 40px);
+        gap: 18px;
+    }
+
+    .public-brand-logo {
+        width: 40px;
+        height: 40px !important;
+        flex-basis: 40px;
+    }
+
+    .public-brand-name {
+        font-size: 22px;
+    }
+
+    .public-navigation {
+        gap: 0;
+    }
+
+    .public-navigation a {
+        padding-inline: 10px;
+        font-size: 12px;
+    }
+
+    .public-header-actions {
+        gap: 8px;
+    }
+
+    .public-button {
+        padding-inline: 13px;
+    }
+}
+
+/* ===================== RESPONSIVE: TABLET ===================== */
+@media (max-width: 850px) {
+    .public-header-inner {
+        min-height: auto;
+        grid-template-columns: 1fr auto;
+        gap: 0 16px;
+        padding-top: 14px;
+        padding-bottom: 12px;
+    }
+
+    .public-brand {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .public-header-actions {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .public-navigation {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-content: flex-start;
+        gap: 6px;
+        margin-top: 12px;
+        padding-top: 10px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: none;
+        border-top: 1px solid rgba(32, 35, 31, 0.12);
+    }
+
+    .public-navigation::-webkit-scrollbar {
+        display: none;
+    }
+
+    .public-navigation a {
+        flex: 0 0 auto;
+        min-height: 38px;
+    }
+
+    .public-footer-inner {
+        width: calc(100% - 40px);
+    }
+}
+
+/* ===================== RESPONSIVE: MOBILE ===================== */
+@media (max-width: 560px) {
+    .public-header-inner {
+        width: calc(100% - 28px);
+        gap: 0 8px;
+        padding-top: 12px;
+        padding-bottom: 10px;
+    }
+
+    .public-brand {
+        gap: 8px;
+    }
+
+    .public-brand-logo {
+        width: 34px;
+        height: 34px !important;
+        flex-basis: 34px;
+        border-radius: 8px;
+    }
+
+    .public-brand-name {
+        font-size: 20px;
+        letter-spacing: -0.9px;
+    }
+
+    .public-header-actions {
+        gap: 7px;
+    }
+
+    .public-login-link {
+        min-height: 38px;
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+    .public-button {
+        min-height: 39px;
+        padding: 8px 10px;
+        font-size: 11px;
+        border-width: 1.5px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 0 var(--pl-ink);
+    }
+
+    .public-button:hover {
+        box-shadow: 3px 3px 0 var(--pl-ink);
+    }
+
+    .public-cart-link {
+        min-height: 38px;
+        gap: 5px;
+        padding: 7px 9px;
+        font-size: 11px;
+    }
+
+    .public-cart-link span {
+        font-size: 14px;
+    }
+
+    .public-navigation {
+        gap: 4px;
+        margin-top: 10px;
+        padding-top: 8px;
+    }
+
+    .public-navigation a {
+        min-height: 35px;
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
+    .public-footer {
+        margin-top: 56px;
+        padding-top: 28px;
+    }
+
+    .public-footer-inner {
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        width: calc(100% - 32px);
+        padding-bottom: 22px;
+    }
+
+    .public-footer-brand {
+        font-size: 21px;
+    }
+
+    .public-footer-inner p {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        font-size: 12px;
+    }
+
+    .public-footer-top {
+        grid-column: 2;
+        grid-row: 1;
+        min-height: 36px;
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    .public-footer-bottom {
+        padding: 15px 18px;
+        font-size: 10px;
+        line-height: 1.7;
+    }
+}
+
+/* ===================== VERY SMALL MOBILE ===================== */
+@media (max-width: 370px) {
+    .public-header-inner {
+        width: calc(100% - 20px);
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .public-brand {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .public-header-actions {
+        grid-column: 1;
+        grid-row: 2;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .public-navigation {
+        grid-column: 1;
+        grid-row: 3;
+        margin-top: 0;
+    }
+
+    .public-brand-name {
+        font-size: 21px;
+    }
+
+    .public-footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .public-footer-top {
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: start;
+    }
+}
+
+/* ===================== ACCESSIBILITY ===================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

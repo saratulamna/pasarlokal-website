@@ -1,0 +1,961 @@
+
+/* =========================================================
+   PASARLOKAL — ADMIN PRODUCTS
+   Uses the shared admin dashboard layout
+   ========================================================= */
+
+.admin-products-page .admin-content {
+    min-width: 0;
+}
+
+.admin-products-page .ap-page {
+    width: 100%;
+    min-width: 0;
+    color: #202b23;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    animation: ap-enter .35s ease both;
+}
+
+.admin-products-page .ap-page *,
+.admin-products-page .ap-page *::before,
+.admin-products-page .ap-page *::after {
+    box-sizing: border-box;
+}
+
+.admin-products-page .ap-page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@keyframes ap-enter {
+    from { opacity: 0; transform: translateY(7px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* INTRO */
+
+.admin-products-page .ap-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 26px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e7e5da;
+}
+
+.admin-products-page .ap-intro > div:first-child {
+    min-width: 0;
+}
+
+.admin-products-page .ap-eyebrow {
+    margin: 0 0 8px;
+    color: #78856f;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.8px;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.admin-products-page .ap-intro h1 {
+    margin: 0;
+    color: #10291e;
+    font-size: clamp(29px, 3vw, 40px);
+    font-weight: 850;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+}
+
+.admin-products-page .ap-intro h1 span {
+    color: #68833d;
+}
+
+.admin-products-page .ap-description {
+    max-width: 610px;
+    margin: 10px 0 0;
+    color: #83897e;
+    font-size: 12px;
+    line-height: 1.85;
+}
+
+.admin-products-page .ap-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    padding: 10px 13px;
+    border: 1px solid #dce7c9;
+    border-radius: 8px;
+    background: #f0f6df;
+    color: #193b2c;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1px;
+}
+
+.admin-products-page .ap-live-pill > span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #83a94d;
+    box-shadow: 0 0 0 4px rgb(131 169 77 / 13%);
+}
+
+/* STATS */
+
+.admin-products-page .ap-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 19px;
+}
+
+.admin-products-page .ap-stat {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    min-height: 140px;
+    padding: 19px;
+    overflow: hidden;
+    border: 1px solid #e7e5da;
+    border-radius: 12px;
+    background: #fffdf7;
+    box-shadow: 0 3px 12px rgb(32 43 35 / 3%);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.admin-products-page .ap-stat::after {
+    position: absolute;
+    z-index: -1;
+    top: -42px;
+    right: -38px;
+    width: 106px;
+    height: 106px;
+    border: 1px solid rgb(25 59 44 / 7%);
+    border-radius: 50%;
+    content: "";
+}
+
+.admin-products-page .ap-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 22px rgb(32 43 35 / 6%);
+}
+
+.admin-products-page .ap-stat-label {
+    display: block;
+    margin-bottom: 13px;
+    color: #777f72;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.admin-products-page .ap-stat > strong {
+    display: block;
+    color: #10291e;
+    font-size: clamp(27px, 2.5vw, 35px);
+    font-weight: 850;
+    letter-spacing: -1.4px;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+}
+
+.admin-products-page .ap-stat-foot {
+    display: block;
+    margin-top: 10px;
+    color: #858b80;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.admin-products-page .ap-stat-active {
+    border-color: #dce9d2;
+    background: #f3f8ee;
+}
+
+.admin-products-page .ap-stat-active .ap-stat-label {
+    color: #5f8145;
+}
+
+.admin-products-page .ap-stat-low {
+    border-color: #f0e3ce;
+    background: #fff9ef;
+}
+
+.admin-products-page .ap-stat-low .ap-stat-label {
+    color: #a97532;
+}
+
+.admin-products-page .ap-stat-out {
+    border-color: #f0dfda;
+    background: #fff6f3;
+}
+
+.admin-products-page .ap-stat-out .ap-stat-label {
+    color: #b26457;
+}
+
+/* INVENTORY STRIP */
+
+.admin-products-page .ap-inventory-strip {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 26px;
+    padding: 14px 17px;
+    border: 1px solid #dbe3d2;
+    border-radius: 10px;
+    background: #f0f4e9;
+}
+
+.admin-products-page .ap-inventory-mark {
+    display: grid;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 9px;
+    background: #193b2c;
+    color: #d9f36a;
+    font-size: 18px;
+}
+
+.admin-products-page .ap-inventory-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    gap: 3px;
+}
+
+.admin-products-page .ap-inventory-copy strong {
+    color: #193b2c;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.admin-products-page .ap-inventory-copy span {
+    color: #737d6d;
+    font-size: 10px;
+}
+
+.admin-products-page .ap-inventory-end {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 2px;
+    padding-left: 15px;
+    border-left: 1px solid #d5dfc9;
+}
+
+.admin-products-page .ap-inventory-end span {
+    color: #78856f;
+    font-size: 8px;
+    font-weight: 850;
+    letter-spacing: 1px;
+}
+
+.admin-products-page .ap-inventory-end strong {
+    color: #193b2c;
+    font-size: 19px;
+    font-weight: 850;
+}
+
+/* PANEL */
+
+.admin-products-page .ap-panel {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #e7e5da;
+    border-radius: 14px;
+    background: #fffdf7;
+    box-shadow: 0 5px 22px rgb(32 43 35 / 4%);
+}
+
+.admin-products-page .ap-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 23px 24px 20px;
+}
+
+.admin-products-page .ap-panel-heading > div {
+    min-width: 0;
+}
+
+.admin-products-page .ap-panel-heading .ap-eyebrow {
+    margin-bottom: 5px;
+}
+
+.admin-products-page .ap-panel-heading h2 {
+    margin: 0;
+    color: #10291e;
+    font-size: 22px;
+    font-weight: 850;
+    letter-spacing: -.6px;
+}
+
+.admin-products-page .ap-panel-heading > div > p:last-child {
+    margin: 5px 0 0;
+    color: #83897e;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.admin-products-page .ap-total {
+    flex-shrink: 0;
+    padding: 7px 10px;
+    border: 1px solid #dce5d3;
+    border-radius: 7px;
+    background: #f0f5e8;
+    color: #193b2c;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* FILTERS */
+
+.admin-products-page .ap-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+    padding: 0 24px 19px;
+    border-bottom: 1px solid #e7e5da;
+}
+
+.admin-products-page .ap-search {
+    display: flex;
+    flex: 1 1 220px;
+    align-items: center;
+    gap: 9px;
+    min-width: 180px;
+    min-height: 39px;
+    padding: 0 11px;
+    border: 1px solid #e4e5da;
+    border-radius: 7px;
+    background: #ffffff;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.admin-products-page .ap-search:focus-within {
+    border-color: #91a975;
+    box-shadow: 0 0 0 3px rgb(145 169 117 / 13%);
+}
+
+.admin-products-page .ap-search > span {
+    color: #72816b;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.admin-products-page .ap-search input {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #202b23;
+    font-size: 11px;
+}
+
+.admin-products-page .ap-search input::placeholder {
+    color: #a0a397;
+}
+
+.admin-products-page .ap-select {
+    flex: 0 1 auto;
+    min-width: 120px;
+    max-width: 185px;
+    min-height: 39px;
+    padding: 0 27px 0 10px;
+    border: 1px solid #e4e5da;
+    border-radius: 7px;
+    outline: 0;
+    background: #fffdf7;
+    color: #505a4e;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.admin-products-page .ap-select:focus-visible {
+    border-color: #91a975;
+    box-shadow: 0 0 0 3px rgb(145 169 117 / 13%);
+}
+
+.admin-products-page .ap-filter-button,
+.admin-products-page .ap-reset-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 39px;
+    padding: 9px 13px;
+    border: 1px solid #193b2c;
+    border-radius: 7px;
+    background: #193b2c;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.admin-products-page .ap-filter-button:hover {
+    background: #10291e;
+}
+
+.admin-products-page .ap-filter-button:active {
+    transform: scale(.98);
+}
+
+.admin-products-page .ap-reset-button {
+    border-color: #e4e5da;
+    background: #ffffff;
+    color: #596454;
+}
+
+.admin-products-page .ap-reset-button:hover {
+    background: #f3f5ed;
+}
+
+/* TABLE */
+
+.admin-products-page .ap-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5c4 #f5f4ed;
+}
+
+.admin-products-page .ap-table {
+    width: 100%;
+    min-width: 940px;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.admin-products-page .ap-table thead th {
+    padding: 14px 15px;
+    border-bottom: 1px solid #e7e5da;
+    background: #f8f7f1;
+    color: #808578;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .8px;
+    white-space: nowrap;
+}
+
+.admin-products-page .ap-table thead th:first-child,
+.admin-products-page .ap-table tbody td:first-child {
+    padding-left: 24px;
+}
+
+.admin-products-page .ap-table thead th:last-child,
+.admin-products-page .ap-table tbody td:last-child {
+    padding-right: 24px;
+}
+
+.admin-products-page .ap-table tbody td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #efeee7;
+    color: #50594d;
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.admin-products-page .ap-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.admin-products-page .ap-table tbody tr:hover td {
+    background: #fbfbf6;
+}
+
+/* PRODUCT CELL */
+
+.admin-products-page .ap-product-cell {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 210px;
+}
+
+.admin-products-page .ap-product-image {
+    display: grid;
+    flex: 0 0 49px;
+    width: 49px;
+    height: 49px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #e1e5d8;
+    border-radius: 9px;
+    background: #f0f4e8;
+    color: #72894e;
+    font-size: 23px;
+}
+
+.admin-products-page .ap-product-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-products-page .ap-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.admin-products-page .ap-product-info strong {
+    max-width: 220px;
+    color: #193b2c;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.admin-products-page .ap-product-info small {
+    color: #92968d;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.admin-products-page .ap-store-name {
+    display: inline-block;
+    max-width: 155px;
+    color: #4e5f49;
+    font-size: 10px;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.admin-products-page .ap-category {
+    display: inline-block;
+    padding: 5px 8px;
+    border: 1px solid #e6e6dc;
+    border-radius: 5px;
+    background: #f9f8f2;
+    color: #757c6f;
+    font-size: 9px;
+    font-weight: 650;
+}
+
+.admin-products-page .ap-price {
+    color: #193b2c;
+    font-size: 11px;
+    font-weight: 850;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.admin-products-page .ap-sold {
+    color: #687362;
+    font-size: 11px;
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+}
+
+/* STOCK BADGES */
+
+.admin-products-page .ap-stock {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+    padding: 5px 8px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.admin-products-page .ap-stock-ok {
+    border-color: #d7e8ce;
+    background: #edf6e7;
+    color: #47743b;
+}
+
+.admin-products-page .ap-stock-low {
+    border-color: #f0dfbd;
+    background: #fff5df;
+    color: #a66c20;
+}
+
+.admin-products-page .ap-stock-out {
+    border-color: #f0d5d0;
+    background: #fff0ec;
+    color: #b44f43;
+}
+
+/* STATUS BADGES */
+
+.admin-products-page .ap-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 26px;
+    padding: 5px 8px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.admin-products-page .ap-status i {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.admin-products-page .ap-status-active {
+    border-color: #d7e8ce;
+    background: #edf6e7;
+    color: #47743b;
+}
+
+.admin-products-page .ap-status-pending {
+    border-color: #f0dfbd;
+    background: #fff5df;
+    color: #a66c20;
+}
+
+.admin-products-page .ap-status-rejected {
+    border-color: #f0d5d0;
+    background: #fff0ec;
+    color: #b44f43;
+}
+
+.admin-products-page .ap-status-neutral {
+    border-color: #e4e5dc;
+    background: #f5f5f0;
+    color: #737b70;
+}
+
+/* EMPTY STATE */
+
+.admin-products-page .ap-empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 250px;
+    padding: 30px 18px;
+    text-align: center;
+}
+
+.admin-products-page .ap-empty-icon {
+    display: grid;
+    width: 53px;
+    height: 53px;
+    margin-bottom: 15px;
+    place-items: center;
+    border: 1px solid #e0e8d1;
+    border-radius: 15px;
+    background: #f0f5e6;
+    color: #68833d;
+    font-size: 25px;
+}
+
+.admin-products-page .ap-empty h3 {
+    margin: 0;
+    color: #10291e;
+    font-size: 16px;
+    font-weight: 850;
+}
+
+.admin-products-page .ap-empty p {
+    max-width: 370px;
+    margin: 8px 0 0;
+    color: #858b80;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.admin-products-page .ap-empty .ap-filter-button {
+    margin-top: 15px;
+}
+
+/* PAGINATION */
+
+.admin-products-page .ap-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 17px 24px;
+    border-top: 1px solid #e7e5da;
+    background: #fffef9;
+}
+
+.admin-products-page .ap-pagination-info {
+    color: #82877d;
+    font-size: 10px;
+}
+
+.admin-products-page .ap-pagination-info strong {
+    color: #193b2c;
+    font-weight: 800;
+}
+
+.admin-products-page .ap-pagination-links nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.admin-products-page .ap-pagination-links nav a,
+.admin-products-page .ap-pagination-links nav span[aria-current="page"] > span,
+.admin-products-page .ap-pagination-links nav span[aria-disabled="true"] > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 6px 9px;
+    border: 1px solid #e6e7dd;
+    border-radius: 6px;
+    background: #fffdf7;
+    color: #606b5d;
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.admin-products-page .ap-pagination-links nav a:hover {
+    background: #eff5e7;
+    color: #193b2c;
+}
+
+.admin-products-page .ap-pagination-links nav span[aria-current="page"] > span {
+    border-color: #193b2c;
+    background: #193b2c;
+    color: #ffffff;
+}
+
+.admin-products-page .ap-pagination-links nav svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* FOOTER */
+
+.admin-products-page .ap-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 23px;
+    padding: 17px 0 0;
+    border-top: 1px solid #e7e5da;
+    color: #8a8f84;
+    font-size: 9px;
+    letter-spacing: .3px;
+}
+
+.admin-products-page .ap-footer b {
+    margin-left: 4px;
+    color: #779649;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .admin-products-page .ap-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-products-page .ap-stat {
+        min-height: 130px;
+    }
+
+    .admin-products-page .ap-filters {
+        gap: 8px;
+    }
+
+    .admin-products-page .ap-search {
+        flex-basis: 100%;
+    }
+
+    .admin-products-page .ap-select {
+        flex: 1 1 135px;
+        max-width: none;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+    .admin-products-page .ap-intro {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 19px;
+        padding-bottom: 19px;
+    }
+
+    .admin-products-page .ap-intro h1 {
+        font-size: clamp(27px, 8vw, 35px);
+    }
+
+    .admin-products-page .ap-description {
+        font-size: 11px;
+    }
+
+    .admin-products-page .ap-live-pill {
+        min-height: 32px;
+        padding: 8px 10px;
+        font-size: 8px;
+    }
+
+    .admin-products-page .ap-stats {
+        gap: 9px;
+        margin-bottom: 14px;
+    }
+
+    .admin-products-page .ap-stat {
+        min-height: 122px;
+        padding: 14px 12px;
+        border-radius: 10px;
+    }
+
+    .admin-products-page .ap-stat-label {
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .admin-products-page .ap-stat > strong {
+        font-size: 27px;
+    }
+
+    .admin-products-page .ap-stat-foot {
+        font-size: 9px;
+    }
+
+    .admin-products-page .ap-inventory-strip {
+        gap: 10px;
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+
+    .admin-products-page .ap-inventory-mark {
+        flex-basis: 32px;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .admin-products-page .ap-inventory-copy strong {
+        font-size: 10px;
+    }
+
+    .admin-products-page .ap-inventory-copy span {
+        font-size: 9px;
+    }
+
+    .admin-products-page .ap-panel {
+        border-radius: 11px;
+    }
+
+    .admin-products-page .ap-panel-heading {
+        align-items: flex-start;
+        gap: 10px;
+        padding: 18px 14px 15px;
+    }
+
+    .admin-products-page .ap-panel-heading h2 {
+        font-size: 19px;
+    }
+
+    .admin-products-page .ap-panel-heading > div > p:last-child {
+        font-size: 10px;
+    }
+
+    .admin-products-page .ap-total {
+        max-width: 125px;
+        padding: 6px 8px;
+        font-size: 9px;
+        text-align: center;
+    }
+
+    .admin-products-page .ap-filters {
+        gap: 7px;
+        padding: 0 14px 15px;
+    }
+
+    .admin-products-page .ap-search {
+        min-width: 100%;
+    }
+
+    .admin-products-page .ap-select {
+        flex-basis: calc(50% - 4px);
+        min-width: 0;
+        font-size: 10px;
+    }
+
+    .admin-products-page .ap-filter-button,
+    .admin-products-page .ap-reset-button {
+        flex: 1;
+    }
+
+    .admin-products-page .ap-table {
+        min-width: 930px;
+    }
+
+    .admin-products-page .ap-table thead th {
+        padding: 12px;
+        font-size: 8px;
+    }
+
+    .admin-products-page .ap-table tbody td {
+        padding: 12px;
+    }
+
+    .admin-products-page .ap-table thead th:first-child,
+    .admin-products-page .ap-table tbody td:first-child {
+        padding-left: 15px;
+    }
+
+    .admin-products-page .ap-table thead th:last-child,
+    .admin-products-page .ap-table tbody td:last-child {
+        padding-right: 15px;
+    }
+
+    .admin-products-page .ap-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px;
+    }
+
+    .admin-products-page .ap-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: 14px;
+        font-size: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-products-page .ap-page,
+    .admin-products-page .ap-page * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

@@ -1,0 +1,1740 @@
+﻿/* =========================================================
+   PASARLOKAL — CHECKOUT SUCCESS
+   Ivory × Forest × Lime
+   ========================================================= */
+
+.cs-page {
+    --cs-paper: #f7f4ea;
+    --cs-paper-deep: #eee9dc;
+    --cs-white: #fffdf7;
+    --cs-forest: #193b2c;
+    --cs-forest-deep: #10291e;
+    --cs-ink: #202b23;
+    --cs-sage: #dce7d4;
+    --cs-sage-dark: #b9cdb1;
+    --cs-muted: #73796e;
+    --cs-lime: #d9f36a;
+    --cs-orange: #f3a45c;
+    --cs-coral: #ed9d87;
+
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding: 24px clamp(16px, 3vw, 40px) 32px;
+    color: var(--cs-ink);
+    font-family: inherit;
+    animation: csPageEnter 0.45s ease both;
+}
+
+.cs-page *,
+.cs-page *::before,
+.cs-page *::after {
+    box-sizing: border-box;
+}
+
+.cs-page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.cs-page a:focus-visible {
+    outline: 3px solid var(--cs-orange);
+    outline-offset: 4px;
+}
+
+@keyframes csPageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   SUCCESS HERO
+   ========================================================= */
+
+.cs-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    align-items: center;
+    min-height: 380px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 2px solid var(--cs-forest);
+    border-radius: 12px;
+    background: var(--cs-forest);
+    color: var(--cs-white);
+    box-shadow: 5px 5px 0 var(--cs-forest-deep);
+}
+
+.cs-hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: clamp(28px, 4vw, 52px);
+}
+
+.cs-status-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 11px;
+    border: 1px solid rgb(255 253 247 / 20%);
+    border-radius: 6px;
+    background: rgb(255 253 247 / 7%);
+    color: #e4eadc;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+}
+
+.cs-status-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    background: var(--cs-lime);
+    box-shadow: 0 0 0 4px rgb(217 243 106 / 12%);
+}
+
+.cs-success-mark {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    margin: 22px 0;
+    place-items: center;
+    border: 2px solid var(--cs-forest-deep);
+    border-radius: 17px;
+    background: var(--cs-lime);
+    color: var(--cs-forest);
+    box-shadow: 4px 4px 0 var(--cs-forest-deep);
+    animation: csCheckPop 0.55s 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.cs-success-mark svg {
+    width: 34px;
+    height: 34px;
+}
+
+@keyframes csCheckPop {
+    from {
+        opacity: 0;
+        transform: scale(0.7) rotate(-8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.cs-overline {
+    display: block;
+    margin-bottom: 12px;
+    color: #d2dec9;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 0.14em;
+    line-height: 1.7;
+}
+
+.cs-hero h1 {
+    margin: 0;
+    color: var(--cs-white);
+    font-size: clamp(34px, 4.4vw, 58px);
+    font-weight: 950;
+    line-height: 1.02;
+    letter-spacing: -0.065em;
+}
+
+.cs-hero h1 span {
+    color: var(--cs-lime);
+}
+
+.cs-hero-copy > p {
+    max-width: 465px;
+    margin: 18px 0 0;
+    color: rgb(255 253 247 / 77%);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.cs-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.cs-button-primary {
+    display: inline-flex;
+    min-height: 47px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 16px;
+    border: 2px solid var(--cs-forest-deep);
+    border-radius: 7px;
+    background: var(--cs-lime);
+    color: var(--cs-forest) !important;
+    box-shadow: 3px 3px 0 var(--cs-forest-deep);
+    font-size: 11px;
+    font-weight: 950;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.cs-button-primary:hover {
+    transform: translate(2px, 2px);
+    background: #e5fa84;
+    box-shadow: 1px 1px 0 var(--cs-forest-deep);
+}
+
+.cs-button-arrow {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.cs-button-secondary {
+    display: inline-flex;
+    min-height: 43px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 13px;
+    border: 1px solid rgb(255 253 247 / 28%);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--cs-white) !important;
+    font-size: 10px;
+    font-weight: 800;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.cs-button-secondary:hover {
+    border-color: rgb(255 253 247 / 60%);
+    background: rgb(255 253 247 / 8%);
+}
+
+/* =========================================================
+   HERO DECORATION
+   ========================================================= */
+
+.cs-hero-art {
+    position: relative;
+    align-self: stretch;
+    min-height: 380px;
+    overflow: hidden;
+}
+
+.cs-hero-decoration {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.cs-decoration-one {
+    top: -160px;
+    left: 44%;
+    width: 340px;
+    height: 340px;
+    background: rgb(217 243 106 / 6%);
+}
+
+.cs-decoration-two {
+    right: -130px;
+    bottom: -230px;
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgb(255 253 247 / 11%);
+}
+
+.cs-art-orbit {
+    position: absolute;
+    border: 1px solid rgb(255 253 247 / 15%);
+    border-radius: 50%;
+}
+
+.cs-orbit-one {
+    top: 30px;
+    right: -6px;
+    width: 345px;
+    height: 345px;
+}
+
+.cs-orbit-two {
+    top: 69px;
+    right: 33px;
+    width: 267px;
+    height: 267px;
+}
+
+.cs-orbit-three {
+    top: 109px;
+    right: 73px;
+    width: 187px;
+    height: 187px;
+}
+
+.cs-art-card {
+    position: absolute;
+    top: 89px;
+    right: 104px;
+    width: 177px;
+    height: 200px;
+    padding: 17px;
+    transform: rotate(-7deg);
+    border: 2px solid var(--cs-forest-deep);
+    border-radius: 12px;
+    background: var(--cs-lime);
+    box-shadow: 6px 6px 0 var(--cs-forest-deep);
+    color: var(--cs-forest);
+}
+
+.cs-art-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cs-art-brand {
+    font-size: 34px;
+    font-weight: 950;
+    letter-spacing: -0.1em;
+}
+
+.cs-art-check {
+    display: grid;
+    width: 27px;
+    height: 27px;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--cs-forest);
+    color: var(--cs-lime);
+    font-size: 16px;
+    font-weight: 950;
+}
+
+.cs-art-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 17px;
+}
+
+.cs-art-lines span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--cs-forest);
+    opacity: 0.72;
+}
+
+.cs-art-lines span:nth-child(2) {
+    width: 72%;
+    opacity: 0.4;
+}
+
+.cs-art-lines span:nth-child(3) {
+    width: 46%;
+    opacity: 0.3;
+}
+
+.cs-art-card-bottom {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 11px;
+    border-top: 1px solid rgb(25 59 44 / 28%);
+}
+
+.cs-art-card-bottom span {
+    font-size: 7px;
+    font-weight: 950;
+    letter-spacing: 0.1em;
+}
+
+.cs-art-card-bottom span:last-child {
+    font-size: 6px;
+    opacity: 0.65;
+}
+
+.cs-art-sticker {
+    position: absolute;
+    right: 20px;
+    bottom: 54px;
+    display: flex;
+    width: 100px;
+    height: 91px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transform: rotate(9deg);
+    border: 2px solid var(--cs-forest-deep);
+    border-radius: 50%;
+    background: var(--cs-coral);
+    color: var(--cs-forest-deep);
+    box-shadow: 4px 4px 0 var(--cs-forest-deep);
+}
+
+.cs-art-sticker span {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+}
+
+.cs-art-sticker strong {
+    font-size: 17px;
+    font-weight: 950;
+    letter-spacing: -0.05em;
+}
+
+.cs-art-confetti {
+    position: absolute;
+    color: var(--cs-lime);
+    font-size: 25px;
+}
+
+.cs-confetti-one {
+    top: 54px;
+    left: 38px;
+    transform: rotate(-12deg);
+}
+
+.cs-confetti-two {
+    right: 48px;
+    top: 65px;
+    color: var(--cs-orange);
+    font-size: 30px;
+}
+
+.cs-confetti-three {
+    bottom: 43px;
+    left: 57px;
+    font-size: 36px;
+}
+
+.cs-art-caption {
+    position: absolute;
+    right: 85px;
+    bottom: 17px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 13px;
+    border: 1px solid rgb(255 253 247 / 20%);
+    border-radius: 8px;
+    background: rgb(16 41 30 / 65%);
+    backdrop-filter: blur(8px);
+}
+
+.cs-caption-star {
+    color: var(--cs-lime);
+    font-size: 25px;
+}
+
+.cs-art-caption > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cs-art-caption strong {
+    color: var(--cs-white);
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.cs-art-caption small {
+    color: rgb(255 253 247 / 68%);
+    font-size: 8px;
+}
+
+/* =========================================================
+   CONFIRMATION STRIP
+   ========================================================= */
+
+.cs-confirmation-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 29px;
+    padding: 16px 19px;
+    border: 1.5px solid #d1ddc5;
+    border-radius: 9px;
+    background: var(--cs-sage);
+}
+
+.cs-confirmation-icon {
+    display: grid;
+    width: 37px;
+    height: 37px;
+    flex: 0 0 37px;
+    place-items: center;
+    border: 1.5px solid var(--cs-forest);
+    border-radius: 9px;
+    background: var(--cs-white);
+    color: var(--cs-forest);
+    font-size: 17px;
+    font-weight: 950;
+}
+
+.cs-confirmation-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cs-confirmation-copy strong {
+    color: var(--cs-forest);
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.cs-confirmation-copy span {
+    color: #5b6855;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.cs-confirmation-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 11px;
+    border: 1px solid #afc2a1;
+    border-radius: 6px;
+    background: var(--cs-white);
+    color: var(--cs-forest) !important;
+    font-size: 9px;
+    font-weight: 900;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.cs-confirmation-link:hover {
+    border-color: var(--cs-forest);
+    background: var(--cs-lime);
+}
+
+.cs-confirmation-link span {
+    font-size: 15px;
+}
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.cs-order-section,
+.cs-next-section {
+    margin-top: 48px;
+}
+
+.cs-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 21px;
+}
+
+.cs-section-kicker {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--cs-muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+}
+
+.cs-section-heading h2 {
+    margin: 0;
+    color: var(--cs-forest);
+    font-size: clamp(25px, 3vw, 34px);
+    font-weight: 950;
+    line-height: 1.1;
+    letter-spacing: -0.055em;
+}
+
+.cs-section-heading h2 span {
+    color: #82984a;
+}
+
+.cs-section-heading p {
+    margin: 10px 0 0;
+    color: var(--cs-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.cs-order-count {
+    padding: 8px 10px;
+    border: 1px solid #e0e3d8;
+    border-radius: 6px;
+    background: var(--cs-white);
+    color: var(--cs-muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+/* =========================================================
+   ORDER DETAILS CARD
+   ========================================================= */
+
+.cs-order-card {
+    overflow: hidden;
+    border: 1.5px solid #e1e4d9;
+    border-radius: 10px;
+    background: var(--cs-white);
+}
+
+.cs-order-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 22px;
+    border-bottom: 1px solid #e8e9df;
+}
+
+.cs-order-heading-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--cs-muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+}
+
+.cs-order-card-heading h3 {
+    margin: 0;
+    color: var(--cs-forest);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+}
+
+.cs-order-status {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 9px;
+    border-radius: 5px;
+    background: #e8f1dd;
+    color: #315c35;
+    font-size: 9px;
+    font-weight: 850;
+}
+
+.cs-order-status span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #548248;
+}
+
+.cs-order-list {
+    padding: 0 22px;
+}
+
+.cs-order-row {
+    display: grid;
+    grid-template-columns: 43px minmax(0, 1fr) minmax(120px, auto);
+    align-items: center;
+    gap: 13px;
+    padding: 17px 0;
+    border-bottom: 1px solid #ecece3;
+}
+
+.cs-order-symbol {
+    display: grid;
+    width: 43px;
+    height: 43px;
+    place-items: center;
+    border: 1.5px solid var(--cs-forest);
+    border-radius: 9px;
+    background: var(--cs-lime);
+    color: var(--cs-forest);
+    font-size: 16px;
+    font-weight: 950;
+    letter-spacing: -0.08em;
+}
+
+.cs-order-information {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cs-order-information strong {
+    color: var(--cs-forest);
+    font-size: 11px;
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+.cs-order-information span {
+    color: var(--cs-muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.cs-order-information small {
+    color: #7f8878;
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.cs-order-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.cs-order-amount span {
+    color: var(--cs-muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.cs-order-amount strong {
+    color: var(--cs-forest);
+    font-size: 12px;
+    font-weight: 950;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.cs-order-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 22px;
+    background: #f3f5ed;
+}
+
+.cs-order-total span {
+    color: var(--cs-muted);
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.cs-order-total strong {
+    color: var(--cs-forest);
+    font-size: 17px;
+    font-weight: 950;
+    text-align: right;
+}
+
+.cs-order-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 22px;
+    border-top: 1px solid #e8e9df;
+    color: var(--cs-muted);
+    font-size: 9px;
+    line-height: 1.7;
+}
+
+.cs-order-card-footer span {
+    color: #86994e;
+    font-size: 15px;
+}
+
+/* =========================================================
+   NEXT STEPS
+   ========================================================= */
+
+.cs-next-section .cs-section-heading {
+    margin-bottom: 23px;
+}
+
+.cs-next-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.cs-next-card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 22px;
+    border: 1.5px solid #e1e4d9;
+    border-radius: 10px;
+    background: var(--cs-white);
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.cs-next-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cs-sage-dark);
+    box-shadow: 3px 3px 0 rgb(25 59 44 / 8%);
+}
+
+.cs-next-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+.cs-next-number {
+    color: #9ba292;
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+}
+
+.cs-next-icon {
+    display: grid;
+    width: 43px;
+    height: 43px;
+    place-items: center;
+    border: 1.5px solid var(--cs-forest);
+    border-radius: 10px;
+    background: var(--cs-sage);
+    color: var(--cs-forest);
+}
+
+.cs-next-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+.cs-next-card-two .cs-next-icon {
+    background: #f9e4cf;
+}
+
+.cs-next-card-three .cs-next-icon {
+    background: var(--cs-lime);
+}
+
+.cs-next-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--cs-muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+}
+
+.cs-next-card h3 {
+    margin: 0;
+    color: var(--cs-forest);
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: -0.035em;
+}
+
+.cs-next-card p {
+    flex: 1;
+    margin: 11px 0 22px;
+    color: var(--cs-muted);
+    font-size: 10px;
+    line-height: 1.9;
+}
+
+.cs-next-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid #e6e8de;
+    color: var(--cs-forest) !important;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.cs-next-link span {
+    font-size: 17px;
+    transition: transform 0.2s ease;
+}
+
+.cs-next-link:hover span {
+    transform: translate(3px, -3px);
+}
+
+/* =========================================================
+   PAYMENT REMINDER
+   ========================================================= */
+
+.cs-payment-reminder {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-top: 28px;
+    padding: 17px 18px;
+    border: 1.5px solid #e7d4ad;
+    border-radius: 9px;
+    background: #fff7e7;
+}
+
+.cs-reminder-icon {
+    display: grid;
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
+    place-items: center;
+    border-radius: 50%;
+    background: #f2dfb3;
+    color: #765a2d;
+    font-size: 12px;
+    font-weight: 950;
+}
+
+.cs-reminder-copy {
+    min-width: 0;
+    flex: 1;
+}
+
+.cs-reminder-copy strong {
+    display: block;
+    color: #684c23;
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 1.6;
+}
+
+.cs-reminder-copy p {
+    margin: 6px 0 0;
+    color: #7e6a4a;
+    font-size: 9px;
+    line-height: 1.9;
+}
+
+.cs-reminder-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 10px;
+    border: 1px solid #dfcba1;
+    border-radius: 6px;
+    background: #fffdf7;
+    color: #684c23 !important;
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.cs-reminder-link span {
+    font-size: 15px;
+}
+
+/* =========================================================
+   CLOSING BANNER
+   ========================================================= */
+
+.cs-closing {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    align-items: center;
+    min-height: 245px;
+    margin-top: 43px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 2px solid var(--cs-forest);
+    border-radius: 11px;
+    background: var(--cs-paper-deep);
+}
+
+.cs-closing-copy {
+    position: relative;
+    z-index: 2;
+    padding: clamp(24px, 4vw, 38px);
+}
+
+.cs-closing-kicker {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--cs-muted);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.17em;
+}
+
+.cs-closing h2 {
+    margin: 0;
+    color: var(--cs-forest);
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 950;
+    line-height: 1.05;
+    letter-spacing: -0.06em;
+}
+
+.cs-closing h2 span {
+    color: #78913f;
+}
+
+.cs-closing-copy > p {
+    max-width: 430px;
+    margin: 13px 0 0;
+    color: var(--cs-muted);
+    font-size: 10px;
+    line-height: 1.9;
+}
+
+.cs-closing-button {
+    display: inline-flex;
+    min-height: 43px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 0 13px;
+    border: 1.5px solid var(--cs-forest);
+    border-radius: 7px;
+    background: var(--cs-forest);
+    color: var(--cs-white) !important;
+    font-size: 10px;
+    font-weight: 850;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.cs-closing-button:hover {
+    background: var(--cs-lime);
+    color: var(--cs-forest) !important;
+}
+
+.cs-closing-button span {
+    font-size: 16px;
+}
+
+.cs-closing-art {
+    position: relative;
+    align-self: stretch;
+    min-height: 245px;
+    overflow: hidden;
+}
+
+.cs-closing-circle {
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    width: 260px;
+    height: 260px;
+    border: 1px solid #cdd7c2;
+    border-radius: 50%;
+    background: #dce7d4;
+}
+
+.cs-closing-circle::before,
+.cs-closing-circle::after {
+    position: absolute;
+    border: 1px solid #bdcdae;
+    border-radius: 50%;
+    content: "";
+}
+
+.cs-closing-circle::before {
+    inset: 20px;
+}
+
+.cs-closing-circle::after {
+    inset: 43px;
+}
+
+.cs-closing-note {
+    position: absolute;
+    top: 63px;
+    right: 67px;
+    display: flex;
+    width: 125px;
+    height: 125px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transform: rotate(7deg);
+    border: 2px solid var(--cs-forest);
+    border-radius: 50%;
+    background: var(--cs-lime);
+    color: var(--cs-forest);
+    box-shadow: 4px 4px 0 var(--cs-forest);
+}
+
+.cs-closing-note strong {
+    font-size: 20px;
+    font-weight: 950;
+    letter-spacing: -0.05em;
+}
+
+.cs-closing-note span {
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+}
+
+.cs-closing-star {
+    position: absolute;
+    top: 22px;
+    left: 18px;
+    color: #9ba85d;
+    font-size: 35px;
+}
+
+.cs-closing-badge {
+    position: absolute;
+    right: 17px;
+    bottom: 15px;
+    display: grid;
+    width: 51px;
+    height: 51px;
+    place-items: center;
+    transform: rotate(-8deg);
+    border: 1.5px solid var(--cs-forest);
+    border-radius: 12px;
+    background: var(--cs-coral);
+    color: var(--cs-forest);
+    box-shadow: 3px 3px 0 var(--cs-forest);
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: -0.08em;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.cs-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 37px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e3d9;
+    color: var(--cs-muted);
+    font-size: 9px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.cs-footer-brand {
+    color: var(--cs-forest);
+    font-size: 15px;
+    font-weight: 950;
+    letter-spacing: -0.09em;
+}
+
+.cs-footer-flower {
+    color: #84994d;
+    font-size: 15px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+    .cs-hero {
+        grid-template-columns: minmax(0, 1fr) 300px;
+    }
+
+    .cs-hero-copy {
+        padding: 30px;
+    }
+
+    .cs-hero h1 {
+        font-size: clamp(34px, 4vw, 47px);
+    }
+
+    .cs-art-card {
+        right: 80px;
+        transform: scale(0.9) rotate(-7deg);
+        transform-origin: top right;
+    }
+
+    .cs-art-sticker {
+        right: 12px;
+        transform: scale(0.84) rotate(9deg);
+        transform-origin: bottom right;
+    }
+
+    .cs-art-caption {
+        right: 45px;
+    }
+
+    .cs-next-grid {
+        gap: 12px;
+    }
+
+    .cs-next-card {
+        padding: 17px;
+    }
+}
+
+/* =========================================================
+   SMALL LAPTOP / TABLET
+   ========================================================= */
+
+@media (max-width: 820px) {
+    .cs-page {
+        padding: 16px 16px 28px;
+    }
+
+    .cs-hero {
+        grid-template-columns: minmax(0, 1fr) 235px;
+        min-height: 350px;
+    }
+
+    .cs-hero-copy {
+        padding: 26px;
+    }
+
+    .cs-hero h1 {
+        font-size: clamp(32px, 5vw, 43px);
+    }
+
+    .cs-hero-copy > p {
+        font-size: 11px;
+    }
+
+    .cs-hero-art {
+        min-height: 350px;
+    }
+
+    .cs-orbit-one {
+        right: -70px;
+        width: 280px;
+        height: 280px;
+    }
+
+    .cs-orbit-two {
+        right: -30px;
+        width: 220px;
+        height: 220px;
+    }
+
+    .cs-orbit-three {
+        right: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .cs-art-card {
+        top: 90px;
+        right: 38px;
+        transform: scale(0.78) rotate(-7deg);
+        transform-origin: top right;
+    }
+
+    .cs-art-sticker {
+        right: 7px;
+        bottom: 55px;
+        transform: scale(0.75) rotate(9deg);
+        transform-origin: bottom right;
+    }
+
+    .cs-art-caption {
+        right: 20px;
+        bottom: 17px;
+        padding: 8px 10px;
+    }
+
+    .cs-confetti-one {
+        left: 10px;
+    }
+
+    .cs-confetti-three {
+        left: 18px;
+    }
+
+    .cs-next-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 13px;
+    }
+
+    .cs-next-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        column-gap: 20px;
+        padding: 18px;
+    }
+
+    .cs-next-card-top {
+        grid-column: 1 / -1;
+        margin-bottom: 17px;
+    }
+
+    .cs-next-label,
+    .cs-next-card h3,
+    .cs-next-card p {
+        grid-column: 1;
+    }
+
+    .cs-next-card p {
+        margin-bottom: 16px;
+    }
+
+    .cs-next-link {
+        grid-column: 1 / -1;
+    }
+
+    .cs-next-card-top {
+        grid-row: 1;
+    }
+}
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 560px) {
+    .cs-page {
+        padding: 10px 12px 24px;
+    }
+
+    .cs-hero {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: auto;
+    }
+
+    .cs-hero-copy {
+        padding: 24px 21px 19px;
+    }
+
+    .cs-status-label {
+        padding: 7px 9px;
+        font-size: 8px;
+    }
+
+    .cs-success-mark {
+        width: 49px;
+        height: 49px;
+        margin: 18px 0;
+        border-radius: 14px;
+    }
+
+    .cs-success-mark svg {
+        width: 29px;
+        height: 29px;
+    }
+
+    .cs-overline {
+        font-size: 8px;
+    }
+
+    .cs-hero h1 {
+        font-size: clamp(35px, 10vw, 47px);
+    }
+
+    .cs-hero-copy > p {
+        margin-top: 14px;
+        font-size: 10px;
+    }
+
+    .cs-hero-actions {
+        align-items: stretch;
+        gap: 11px;
+        margin-top: 20px;
+    }
+
+    .cs-button-primary {
+        flex: 1;
+        gap: 10px;
+        padding-inline: 12px;
+        font-size: 10px;
+    }
+
+    .cs-button-secondary {
+        flex: 0 0 auto;
+        padding-inline: 10px;
+        font-size: 9px;
+    }
+
+    .cs-hero-art {
+        min-height: 193px;
+        margin-top: -3px;
+    }
+
+    .cs-orbit-one {
+        top: -36px;
+        right: 20px;
+        width: 220px;
+        height: 220px;
+    }
+
+    .cs-orbit-two {
+        top: -1px;
+        right: 55px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .cs-orbit-three {
+        top: 31px;
+        right: 87px;
+        width: 86px;
+        height: 86px;
+    }
+
+    .cs-art-card {
+        top: 19px;
+        right: 39%;
+        transform: scale(0.62) rotate(-7deg);
+        transform-origin: top right;
+    }
+
+    .cs-art-sticker {
+        right: 17%;
+        bottom: 32px;
+        transform: scale(0.66) rotate(9deg);
+        transform-origin: bottom right;
+    }
+
+    .cs-art-caption {
+        right: 50%;
+        bottom: 8px;
+        transform: translateX(50%);
+        white-space: nowrap;
+    }
+
+    .cs-confetti-one {
+        top: 12px;
+        left: 16%;
+        font-size: 20px;
+    }
+
+    .cs-confetti-two {
+        top: 9px;
+        right: 15%;
+        font-size: 24px;
+    }
+
+    .cs-confetti-three {
+        bottom: 24px;
+        left: 13%;
+        font-size: 25px;
+    }
+
+    .cs-confirmation-strip {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+        padding: 14px;
+    }
+
+    .cs-confirmation-icon {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+
+    .cs-confirmation-copy {
+        flex-basis: calc(100% - 45px);
+    }
+
+    .cs-confirmation-copy strong {
+        font-size: 10px;
+    }
+
+    .cs-confirmation-copy span {
+        font-size: 9px;
+    }
+
+    .cs-confirmation-link {
+        margin-left: 42px;
+    }
+
+    .cs-order-section,
+    .cs-next-section {
+        margin-top: 36px;
+    }
+
+    .cs-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 17px;
+    }
+
+    .cs-section-heading h2 {
+        font-size: 27px;
+    }
+
+    .cs-section-heading p {
+        font-size: 10px;
+    }
+
+    .cs-order-card-heading {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .cs-order-card-heading h3 {
+        font-size: 16px;
+    }
+
+    .cs-order-status {
+        align-self: flex-start;
+    }
+
+    .cs-order-list {
+        padding-inline: 14px;
+    }
+
+    .cs-order-row {
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 10px;
+        padding: 14px 0;
+    }
+
+    .cs-order-symbol {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .cs-order-information strong {
+        font-size: 10px;
+    }
+
+    .cs-order-information span {
+        font-size: 9px;
+    }
+
+    .cs-order-amount {
+        grid-column: 2;
+        align-items: flex-start;
+        margin-top: 3px;
+    }
+
+    .cs-order-amount span {
+        font-size: 7px;
+    }
+
+    .cs-order-amount strong {
+        font-size: 12px;
+        text-align: left;
+    }
+
+    .cs-order-total {
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .cs-order-total span {
+        font-size: 9px;
+        line-height: 1.7;
+    }
+
+    .cs-order-total strong {
+        font-size: 15px;
+    }
+
+    .cs-order-card-footer {
+        padding: 13px 15px;
+        font-size: 8px;
+    }
+
+    .cs-next-card {
+        padding: 16px;
+    }
+
+    .cs-next-card-top {
+        margin-bottom: 14px;
+    }
+
+    .cs-next-label {
+        font-size: 7px;
+    }
+
+    .cs-next-card h3 {
+        font-size: 16px;
+    }
+
+    .cs-next-card p {
+        font-size: 9px;
+        line-height: 1.9;
+    }
+
+    .cs-payment-reminder {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+        padding: 14px;
+    }
+
+    .cs-reminder-copy {
+        flex-basis: calc(100% - 40px);
+    }
+
+    .cs-reminder-copy strong {
+        font-size: 9px;
+    }
+
+    .cs-reminder-copy p {
+        font-size: 8px;
+    }
+
+    .cs-reminder-link {
+        margin-left: 37px;
+    }
+
+    .cs-closing {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 31px;
+    }
+
+    .cs-closing-copy {
+        padding: 23px 20px 10px;
+    }
+
+    .cs-closing h2 {
+        font-size: 31px;
+    }
+
+    .cs-closing-copy > p {
+        font-size: 9px;
+    }
+
+    .cs-closing-art {
+        min-height: 155px;
+        margin-top: -3px;
+    }
+
+    .cs-closing-circle {
+        top: -46px;
+        right: 50%;
+        width: 205px;
+        height: 205px;
+        transform: translateX(50%);
+    }
+
+    .cs-closing-note {
+        top: 8px;
+        right: 50%;
+        width: 100px;
+        height: 100px;
+        transform: translateX(50%) rotate(7deg);
+    }
+
+    .cs-closing-note strong {
+        font-size: 17px;
+    }
+
+    .cs-closing-star {
+        top: 13px;
+        left: 13%;
+        font-size: 27px;
+    }
+
+    .cs-closing-badge {
+        right: 12%;
+        bottom: 11px;
+        width: 43px;
+        height: 43px;
+        font-size: 15px;
+    }
+
+    .cs-footer {
+        gap: 7px;
+        margin-top: 27px;
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 360px) {
+    .cs-page {
+        padding-inline: 9px;
+    }
+
+    .cs-hero-copy {
+        padding-inline: 16px;
+    }
+
+    .cs-hero h1 {
+        font-size: 34px;
+    }
+
+    .cs-hero-actions {
+        flex-direction: column;
+    }
+
+    .cs-button-primary,
+    .cs-button-secondary {
+        width: 100%;
+    }
+
+    .cs-art-card {
+        right: 35%;
+    }
+
+    .cs-art-sticker {
+        right: 11%;
+    }
+
+    .cs-order-total {
+        flex-direction: column;
+    }
+
+    .cs-order-total strong {
+        text-align: left;
+    }
+
+    .cs-footer {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .cs-page,
+    .cs-page *,
+    .cs-page *::before,
+    .cs-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
